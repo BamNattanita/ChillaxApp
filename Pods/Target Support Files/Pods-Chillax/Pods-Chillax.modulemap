@@ -1,0 +1,6 @@
+framework module Pods_Chillax {
+  umbrella header "Pods-Chillax-umbrella.h"
+
+  export *
+  module * { export * }
+}

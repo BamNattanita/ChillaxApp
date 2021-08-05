@@ -10,10 +10,10 @@ import UIKit
 class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var movieImageView: UIImageView!
-    @IBOutlet weak var titleLable: UILabel!
+    @IBOutlet weak var movieName: UILabel!
     
-    func setup(with movie: Movie) {
-        movieImageView.image = movie.image
-        titleLable.text = movie.title
-    }
+//    func setup(with movie: Movie) {
+//        movieImageView.image = movie.image
+//        titleLable.text = movie.title
+//    }
 }

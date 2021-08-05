@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,9 +25,12 @@
 		48B05E9826BB11C3004F9349 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E9726BB11C3004F9349 /* HomeWorker.swift */; };
 		48B05E9A26BB11D8004F9349 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E9926BB11D8004F9349 /* HomeRouter.swift */; };
 		48B05E9C26BB11EF004F9349 /* HomeRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E9B26BB11EF004F9349 /* HomeRemoteStore.swift */; };
+		48E882E526BC6EF8009F7E81 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E882E426BC6EF8009F7E81 /* MovieDetailsViewController.swift */; };
+		F6F2C64DA884C573C7E95888 /* Pods_Chillax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F2CDEA51B410BDAAD9D7AE /* Pods_Chillax.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47F4DBE5782512FD0B240913 /* Pods-Chillax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chillax.debug.xcconfig"; path = "Target Support Files/Pods-Chillax/Pods-Chillax.debug.xcconfig"; sourceTree = "<group>"; };
 		48B05E5D26B8F56C004F9349 /* Chillax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chillax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B05E6026B8F56C004F9349 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48B05E6226B8F56C004F9349 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +51,9 @@
 		48B05E9726BB11C3004F9349 /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
 		48B05E9926BB11D8004F9349 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		48B05E9B26BB11EF004F9349 /* HomeRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRemoteStore.swift; sourceTree = "<group>"; };
+		48E882E426BC6EF8009F7E81 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		90F2CDEA51B410BDAAD9D7AE /* Pods_Chillax.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chillax.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CC4B250C4633803C9CD382B /* Pods-Chillax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chillax.release.xcconfig"; path = "Target Support Files/Pods-Chillax/Pods-Chillax.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,17 +61,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F2C64DA884C573C7E95888 /* Pods_Chillax.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21EDF31ACE5B781C2670CDE6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47F4DBE5782512FD0B240913 /* Pods-Chillax.debug.xcconfig */,
+				9CC4B250C4633803C9CD382B /* Pods-Chillax.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		48B05E5426B8F56C004F9349 = {
 			isa = PBXGroup;
 			children = (
 				48B05E5F26B8F56C004F9349 /* Chillax */,
 				48B05E5E26B8F56C004F9349 /* Products */,
+				21EDF31ACE5B781C2670CDE6 /* Pods */,
+				78EF5DB61D3613CD373E24A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +100,7 @@
 			children = (
 				48B05E6026B8F56C004F9349 /* AppDelegate.swift */,
 				48B05E6226B8F56C004F9349 /* SceneDelegate.swift */,
+				48E882E326BC6ECB009F7E81 /* MovieDetailsScene */,
 				48B05E7426B944F4004F9349 /* HomeScene */,
 				48B05E7626B94597004F9349 /* SearchScene */,
 				48B05E7826B945B0004F9349 /* BasketScene */,
@@ -223,6 +242,22 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		48E882E326BC6ECB009F7E81 /* MovieDetailsScene */ = {
+			isa = PBXGroup;
+			children = (
+				48E882E426BC6EF8009F7E81 /* MovieDetailsViewController.swift */,
+			);
+			path = MovieDetailsScene;
+			sourceTree = "<group>";
+		};
+		78EF5DB61D3613CD373E24A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90F2CDEA51B410BDAAD9D7AE /* Pods_Chillax.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,9 +265,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48B05E7126B8F570004F9349 /* Build configuration list for PBXNativeTarget "Chillax" */;
 			buildPhases = (
+				13F5220CEB8702813884385B /* [CP] Check Pods Manifest.lock */,
 				48B05E5926B8F56C004F9349 /* Sources */,
 				48B05E5A26B8F56C004F9349 /* Frameworks */,
 				48B05E5B26B8F56C004F9349 /* Resources */,
+				C6D17BE07748C66BA6A141D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,11 +325,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		13F5220CEB8702813884385B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chillax-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6D17BE07748C66BA6A141D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chillax/Pods-Chillax-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chillax/Pods-Chillax-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chillax/Pods-Chillax-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		48B05E5926B8F56C004F9349 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E882E526BC6EF8009F7E81 /* MovieDetailsViewController.swift in Sources */,
 				48B05E8C26B993EB004F9349 /* Movie.swift in Sources */,
 				48B05E9426BB118E004F9349 /* HomeInteractor.swift in Sources */,
 				48B05E9226BB1164004F9349 /* GetMoviesUseCase.swift in Sources */,
@@ -451,6 +531,7 @@
 		};
 		48B05E7226B8F570004F9349 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47F4DBE5782512FD0B240913 /* Pods-Chillax.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -470,6 +551,7 @@
 		};
 		48B05E7326B8F570004F9349 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CC4B250C4633803C9CD382B /* Pods-Chillax.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
