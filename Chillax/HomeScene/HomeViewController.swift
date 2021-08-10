@@ -4,97 +4,80 @@
 //
 //  Created by Nattanita on 3/8/2564 BE.
 //
-
 import UIKit
-import Foundation
 import AFNetworking
-//protocol IHomeViewController: AnyObject {
-//    func showMovies(viewModel: GetMoviesUseCase.ViewModel)
-//}
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+protocol IHomeViewController: AnyObject {
+    func showMovies(viewModel: GetMoviesUseCase.ViewModel)
+}
 
-    @IBOutlet weak var upcomingCollection: UICollectionView!
-//    var interactor: IHomeInteractor!
+class HomeViewController: UIViewController{
 
-//    var dataList = [Result]()
-    var upcoming = [[String:Any]]()
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var interactor: IHomeInteractor!
+    var displayMovies: [IMovieViewModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let width = view.frame.size.width / 2
-                let layout = upcomingCollection.collectionViewLayout as! UICollectionViewFlowLayout
-                layout.itemSize = CGSize(width: width, height: width)
-                layout.scrollDirection = .vertical
-            
-//                layout.minimumLineSpacing = 8
-            
-//                layout.minimumInteritemSpacing = 4
-                
-                upcomingCollection.delegate = self
-                upcomingCollection.dataSource = self
+        let presenter = HomePresenter(viewController: self)
+        let remoteStore = HomeRemoteStore()
+        let worker = HomeWorker(remoteStore: remoteStore)
+        interactor = HomeInteractor(presenter: presenter, worker: worker)
         
-                upcomingCollection
-                   .setCollectionViewLayout(layout, animated: true)
-        
-                
-                fetchUpcomingMovies()
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
-            
-        func fetchUpcomingMovies(){
-            let apikey = "2b1f7cd2255bdc2ecbee5920521bb794"
-            if let url = NSURL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=\(apikey)&language=en-US&page=1"){
-                let request = URLRequest(url: url as URL, cachePolicy: URLRequest.CachePolicy.reloadIgnoringCacheData, timeoutInterval: 10)
-                let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-                   let task = session.dataTask(with: request) { (data, response, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else if let data = data{
-                        let responseDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-    //                    print("responseDictionary : \(responseDictionary)")
-                        self.upcoming = responseDictionary["results"] as! [[String:Any]]
-                        self.upcomingCollection.reloadData()
-                   }
-                }
-                   task.resume()
-                }
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return upcoming.count
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
-            
-            let movie = upcoming[indexPath.row]
-            let title = movie["title"] as! String
-            let posterPath = movie["poster_path"] as? String ?? ""
-
-            let baseUrl = "https://image.tmdb.org/t/p/w500"
-            let posterUrl = URL(string: baseUrl + posterPath)
-
-            cell.movieName.text = title
-            cell.movieName.sizeToFit()
-            cell.movieImageView.setImageWith(posterUrl!)
-            return cell
-        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getMovies()
     }
+}
 
-//// MARK: - Interactor
-//extension HomeViewController {
-//    func getMovies() {
-//        let request = GetMoviesUseCase.Request()
-//        interactor.getMovies(request: request)
-//    }
-//}
-//
-//// MARK: - IHomeViewController
-//extension HomeViewController: IHomeViewController {
-//    func showMovies(viewModel: GetMoviesUseCase.ViewModel) {
-//        // Display data in tableview or collection view
-//        print("--- showMovies \(viewModel.movies)")
-//    }
-//}
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayMovies.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
+        let movie = displayMovies[indexPath.row]
+        let title = movie.title
+        let posterurl = displayMovies[indexPath.row].posterURL
+        
+        cell.movieName.text = title
+        cell.movieName.sizeToFit()
+        
+        cell.movieImageView.setImageWith(posterurl!)
+        return cell
+    }
+    
+}
+
+// MARK: - Interactor
+extension HomeViewController {
+    func getMovies() {
+        let request = GetMoviesUseCase.Request()
+        interactor.getMovies(request: request)
+    }
+}
+
+// MARK: - IHomeViewController
+extension HomeViewController: IHomeViewController {
+
+    func showMovies(viewModel: GetMoviesUseCase.ViewModel) {
+        self.displayMovies = viewModel.movies
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+            
+}
+
+
+
+}
+

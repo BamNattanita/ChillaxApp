@@ -1,89 +1,94 @@
-////
-////  Movie.swift
-////  Chillax
-////
-////  Created by Nattanita on 3/8/2564 BE.
-////
 //
-////import Foundation
-////import UIKit
+//  Movie.swift
+//  Chillax
 //
-////protocol IMovie {
-////    var id: String { get }
-////    var name: String { get }
-////}
+//  Created by Nattanita on 3/8/2564 BE.
 //
-////struct Movie: IMovie {
-////    var id: String
-////    var name: String
-////}
-//
-////struct Movie {
-////    let title: String
-////    let image: UIImage
-////}
-////
-////let movies: [Movie] = [
-////    Movie(title: "Rick And Morty", image: #imageLiteral(resourceName: "rickandmorty")),
-////    Movie(title: "John Wick", image: #imageLiteral(resourceName: "johnwick")),
-////    Movie(title: "Avatar", image: #imageLiteral(resourceName: "avatar")),
-////    Movie(title: "Quiet Place", image: #imageLiteral(resourceName: "quietplace")),
-////    Movie(title: "Fast And Furious", image: #imageLiteral(resourceName: "fastandfurios9")),
-////    Movie(title: "Avengers", image: #imageLiteral(resourceName: "avengers")),
-////    Movie(title: "Hightown", image: #imageLiteral(resourceName: "hightown"))]
-//
-////   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
-//
-//import Foundation
-//
-//struct MovieResult: Codable {
-//    let dates: Dates
-//    let page: Int
-//    let results: [Result]
-//    let totalPages, totalResults: Int
-//
-//    enum CodingKeys: String, CodingKey {
-//        case dates, page, results
-//        case totalPages = "total_pages"
-//        case totalResults = "total_results"
-//    }
-//}
-//
-//// MARK: - Dates
-//struct Dates: Codable {
-//    let maximum, minimum: String
-//}
-//
-//// MARK: - Result
-//struct Result: Codable {
-//    let adult: Bool
-//    let backdropPath: String?
-//    let genreIDS: [Int]
-//    let id: Int
-//    let originalLanguage: OriginalLanguage
-//    let originalTitle, overview: String
-//    let popularity: Double
-//    let posterPath, releaseDate, title: String
-//    let video: Bool
-//    let voteAverage: Double
-//    let voteCount: Int
-//
-//    enum CodingKeys: String, CodingKey {
-//        case adult
-//        case backdropPath = "backdrop_path"
-//        case genreIDS = "genre_ids"
-//        case id
-//        case originalLanguage = "original_language"
-//        case originalTitle = "original_title"
-//        case overview, popularity
-//        case posterPath = "poster_path"
-//        case releaseDate = "release_date"
-//        case title, video
-//        case voteAverage = "vote_average"
-//        case voteCount = "vote_count"
-//    }
-//}
-//
-//enum OriginalLanguage: String, Codable {
-//    case en = "en"
-//}
+
+import Foundation
+
+ struct MoviesResponse: Codable {
+     let page: Int
+     let totalResults: Int
+     let totalPages: Int
+     let results: [Movie]
+}
+
+ struct Movie: Codable {
+    
+     let id: Int
+     let title: String
+     let backdropPath: String?
+     let posterPath: String?
+     let overview: String
+     let releaseDate: Date
+     let voteAverage: Double
+     let voteCount: Int
+     let tagline: String?
+     let genres: [MovieGenre]?
+     let videos: MovieVideoResponse?
+     let credits: MovieCreditResponse?
+     let adult: Bool
+     let runtime: Int?
+     var posterURL: URL {
+        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
+    }
+    
+     var backdropURL: URL {
+        return URL(string: "https://image.tmdb.org/t/p/original\(backdropPath ?? "")")!
+    }
+    
+     var voteAveragePercentText: String {
+        return "\(Int(voteAverage * 10))%"
+    }
+    
+     var ratingText: String {
+        let rating = Int(voteAverage)
+        let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
+            return acc + "⭐️"
+        }
+        return ratingText
+    }
+    
+}
+
+ struct MovieGenre: Codable {
+    let name: String
+}
+
+ struct MovieVideoResponse: Codable {
+    public let results: [MovieVideo]
+}
+
+ struct MovieVideo: Codable {
+     let id: String
+     let key: String
+     let name: String
+     let site: String
+     let size: Int
+     let type: String
+    
+     var youtubeURL: URL? {
+        guard site == "YouTube" else {
+            return nil
+        }
+        return URL(string: "https://www.youtube.com/watch?v=\(key)")
+    }
+}
+
+ struct MovieCreditResponse: Codable {
+     let cast: [MovieCast]
+     let crew: [MovieCrew]
+}
+
+ struct MovieCast: Codable {
+     let character: String
+     let name: String
+}
+
+ struct MovieCrew: Codable {
+     let id: Int
+     let department: String
+     let job: String
+     let name: String
+}
