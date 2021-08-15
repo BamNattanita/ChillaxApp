@@ -7,8 +7,11 @@
 import Foundation
 
 protocol IHomeAPIService {
-    func movies(success: @escaping (_ movie: [MoviesResponse])-> Void, failure: @escaping (_ error: ErrorResponse)-> Void)
+    func movies(
+        completion: @escaping (Result<[Movie]?, Error>) -> Void
+    )
 }
+
 
 class MovieService {
     
@@ -18,29 +21,30 @@ class MovieService {
         self.movieStore = movieStore
     }
     
-    func movies(onSuccess: @escaping (_ movies: [Movie]) -> Void, onFailure: @escaping (_ error: ErrorResponse) -> Void) {
-        movieStore.movies { (response) in
-        } failure: { (error: ErrorResponse) in
-                onFailure(error)
-        }
+    func movies(
+        completion: @escaping (Result<[Movie]?, Error>) -> Void
+
+    ) {
+        movieStore.movies(completion: completion)
+
     }
 }
 
-public enum ErrorResponse: String {
-    case apiError
-    case invalidEndpoint
-    case invalidResponse
-    case noData
-    case serializationError
-    
-    public var description: String {
-        switch self {
-        case .apiError: return "Error api"
-        case .invalidEndpoint: return "Error endpoint"
-        case .invalidResponse: return "Error response"
-        case .noData: return "Error data"
-        case .serializationError: return "Error serialization process"
-        }
-    }
-}
+//public enum ErrorResponse: String {
+//    case apiError
+//    case invalidEndpoint
+//    case invalidResponse
+//    case noData
+//    case serializationError
+//
+//    public var description: String {
+//        switch self {
+//        case .apiError: return "Error api"
+//        case .invalidEndpoint: return "Error endpoint"
+//        case .invalidResponse: return "Error response"
+//        case .noData: return "Error data"
+//        case .serializationError: return "Error serialization process"
+//        }
+//    }
+//}
 

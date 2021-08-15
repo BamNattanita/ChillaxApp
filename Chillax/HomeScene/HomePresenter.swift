@@ -27,7 +27,6 @@ extension HomePresenter: IHomePresenter {
         let movies = response.movies.compactMap { MovieViewModel(movie: $0) }
         let viewModel = GetMoviesUseCase.ViewModel(movies: movies)
         viewController?.showMovies(viewModel: viewModel)
-        print(movie)
 
     }
     

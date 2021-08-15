@@ -16,7 +16,11 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     
     var interactor: IHomeInteractor!
+    var router: IHomeRouter!
+
     var displayMovies: [IMovieViewModel] = []
+    
+    var selectedMovie: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,8 @@ class HomeViewController: UIViewController{
         let presenter = HomePresenter(viewController: self)
         let remoteStore = HomeRemoteStore()
         let worker = HomeWorker(remoteStore: remoteStore)
+        router = HomeRouter()
+        router.viewController = self
         interactor = HomeInteractor(presenter: presenter, worker: worker)
         
         collectionView.dataSource = self
@@ -55,8 +61,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.movieImageView.setImageWith(posterurl!)
         return cell
     }
-    
 }
+
 
 // MARK: - Interactor
 extension HomeViewController {
@@ -76,8 +82,15 @@ extension HomeViewController: IHomeViewController {
         }
             
 }
-
-
-
 }
 
+extension HomeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "movieToDetail" {
+            let cell = sender as! MovieCollectionViewCell
+            let indexPath = collectionView.indexPath(for: cell)
+            let id = displayMovies[indexPath!.row].id
+            router.openMovieDetail(segue: segue, id: id)
+        }
+    }
+}
