@@ -15,6 +15,8 @@ struct MovieDetails: Codable {
     let backdropPath: String?
     let posterPath: String?
     let voteAverage: Double
+    let releaseDate: String
+    let originalLanguage: String
     var posterURL: URL {
        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
    }

@@ -23,6 +23,7 @@
 		4899389626C995BC000604C2 /* SearchMovieWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899389526C995BC000604C2 /* SearchMovieWorker.swift */; };
 		4899389826C995D2000604C2 /* SearchMovieRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899389726C995D2000604C2 /* SearchMovieRemoteStore.swift */; };
 		4899389A26C99730000604C2 /* SearchMovieAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899389926C99730000604C2 /* SearchMovieAPIService.swift */; };
+		4899389C26CA1C46000604C2 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899389B26CA1C46000604C2 /* MovieTableViewCell.swift */; };
 		48B05E6126B8F56C004F9349 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E6026B8F56C004F9349 /* AppDelegate.swift */; };
 		48B05E6326B8F56C004F9349 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E6226B8F56C004F9349 /* SceneDelegate.swift */; };
 		48B05E6526B8F56C004F9349 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E6426B8F56C004F9349 /* HomeViewController.swift */; };
@@ -63,6 +64,7 @@
 		4899389526C995BC000604C2 /* SearchMovieWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieWorker.swift; sourceTree = "<group>"; };
 		4899389726C995D2000604C2 /* SearchMovieRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieRemoteStore.swift; sourceTree = "<group>"; };
 		4899389926C99730000604C2 /* SearchMovieAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieAPIService.swift; sourceTree = "<group>"; };
+		4899389B26CA1C46000604C2 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		48B05E5D26B8F56C004F9349 /* Chillax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chillax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B05E6026B8F56C004F9349 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48B05E6226B8F56C004F9349 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				4899389326C995AD000604C2 /* SearchMoviePresenter.swift */,
 				4899389526C995BC000604C2 /* SearchMovieWorker.swift */,
 				4899389726C995D2000604C2 /* SearchMovieRemoteStore.swift */,
+				4899389B26CA1C46000604C2 /* MovieTableViewCell.swift */,
 			);
 			path = SearchScene;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				48B05E8E26BB111A004F9349 /* HomeAPIService.swift in Sources */,
 				48822FF426C3DA9700F28AEC /* GetDetailsUseCase.swift in Sources */,
 				48B05E6126B8F56C004F9349 /* AppDelegate.swift in Sources */,
+				4899389C26CA1C46000604C2 /* MovieTableViewCell.swift in Sources */,
 				4899389A26C99730000604C2 /* SearchMovieAPIService.swift in Sources */,
 				48822FE626C2D79800F28AEC /* MovieDetailsViewModel.swift in Sources */,
 				48B05E9026BB113A004F9349 /* MovieViewModel.swift in Sources */,

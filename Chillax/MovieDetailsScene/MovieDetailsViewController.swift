@@ -21,7 +21,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var ratings: UILabel!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieSummary: UITextView!
-
+    @IBOutlet weak var language: UILabel!
+    
 //    var movieDetail: String = ""
 //    var displayMovies: [IMovieDetailsViewModel] = []
     var id: Int!
@@ -71,6 +72,8 @@ extension MovieDetailsViewController: IMovieDetailsViewController {
 
         self.movieImageView.setImageWith(backdropurl!)
         self.ratings.text = detailViewModel?.voteAveragePercentText
+        self.releaseDate.text = detailViewModel?.releaseDate
+        self.language.text = detailViewModel?.originalLanguage
     }
         
 //        releaseDate.text = movieDetails.releaseDate

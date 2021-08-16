@@ -11,12 +11,13 @@ protocol IMovieDetailsViewModel {
 
     var id: Int { get }
     var title: String { get }
-//    var releaseDate: String { get }
+    var releaseDate: String { get }
     var posterURL: URL? { get }
     var backdropURL: URL? { get }
     var overview: String {get}
     var voteAverage: Double {get}
     var voteAveragePercentText: String {get}
+    var originalLanguage: String {get}
 
 }
 
@@ -24,13 +25,14 @@ struct MovieDetailsViewModel : IMovieDetailsViewModel {
     
     var id: Int 
     let title: String
-//    let releaseDate: String
+    let releaseDate: String
     let posterURL: URL?
     let backdropURL: URL?
     let overview: String
-//    let voteAverage: Double
-    let voteAveragePercentText: String
     let voteAverage: Double
+    let voteAveragePercentText: String
+//    let voteAverage: Double
+    let originalLanguage: String
     
 }
 
@@ -39,12 +41,13 @@ extension MovieDetailsViewModel {
         if let movieDetails = movieDetails {
         self.id = movieDetails.id
         self.title = movieDetails.title
-//        releaseDate = movieDetails.releaseDate
+        releaseDate = movieDetails.releaseDate
         posterURL = movieDetails.posterURL
         backdropURL = movieDetails.backdropURL
         overview = movieDetails.overview
         voteAverage = movieDetails.voteAverage
         voteAveragePercentText = movieDetails.voteAveragePercentText
+        originalLanguage = movieDetails.originalLanguage
         } else {
             return nil
         }

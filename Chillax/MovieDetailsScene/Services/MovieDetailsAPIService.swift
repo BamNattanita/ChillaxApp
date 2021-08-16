@@ -17,7 +17,7 @@ protocol IDetailAPIService {
 class DetailService {
     
     var detailStore: IDetailAPIService
-    
+//
     init(detailStore: IDetailAPIService) {
         self.detailStore = detailStore
     }
