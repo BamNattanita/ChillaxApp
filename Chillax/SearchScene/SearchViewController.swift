@@ -17,12 +17,14 @@ protocol ISearchMovieViewController: AnyObject {
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
     //    @IBOutlet weak var MovieImage: UIImageView!
     @IBOutlet weak var SearchBar: UIView!
     @IBOutlet weak var SearchText: UITextField!
 //    @IBOutlet weak var MovieName: UILabel!
     
 //    var title: String!
+    var router: ISearchRouter!
     var interactor: ISearchMovieInteractor!
     var movieLists: [ISearchMovieViewModel] = []
     override func viewDidLoad() {
@@ -34,6 +36,8 @@ class SearchViewController: UIViewController {
         let presenter = SearchPresenter(viewController: self)
         let searchremoteStore = SearchRemoteStore()
         let worker = SearchWorker(searchremoteStore: searchremoteStore)
+        router = SearchRouter()
+        router.viewController = self
         interactor = SearchInteractor(presenter: presenter, worker: worker)
         
         SearchText.delegate = self
@@ -91,7 +95,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 //        let text = movieList.date
 //        cell.day.text = text
         let movieTitle = movieList.title
-//        let posterurl = movieLists[indexPath.row].posterURL
+        let posterurl = movieLists[indexPath.row].posterURL
+        let backdropurl = movieLists[indexPath.row].backdropURL
+
 //        print(movieTitle)
         
         cell.titleLabel?.text = movieTitle
@@ -99,7 +105,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 //        cell.TitleNameTable.sizeToFit()
         
 //        cell.textLabel?.text = movieTitle
-//        cell.MovieImageTable.setImageWith(posterurl!)
+        cell.moviePoster?.setImageWith(backdropurl!)
         return cell
     }
     
@@ -131,8 +137,18 @@ extension SearchViewController {
     func getSearch(title: String) {
         let request = GetSearchMovieUseCase.Request(title: title)
         interactor?.getSearch(request: request)
-        print(request)
+       
     }
 }
 
-
+extension SearchViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "movieToDetail" {
+            let cell = sender as! MovieTableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let id = movieLists[indexPath!.row].id
+            router.openMovieDetailPage(segue: segue, id: id)
+            print(id)
+        }
+    }
+}

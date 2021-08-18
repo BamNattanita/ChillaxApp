@@ -9,6 +9,7 @@ import Foundation
 
 protocol IDetailInteractor {
     func getDetail(request: GetDetailsUseCase.Request)
+    func saveMovie(request: AddToCartUseCase.Request)
 }
 
 struct DetailInteractor {
@@ -28,5 +29,21 @@ extension DetailInteractor: IDetailInteractor {
             }
         }
     }
+    
+    func saveMovie(request: AddToCartUseCase.Request) {
+        worker.addToCart(movieDetails: request.movieDetails ) { result in
+            switch result {
+            case .success(let isSuccess):
+                let response = AddToCartUseCase.Response( isSuccess: isSuccess)
+                presenter.presentMoviesInCart(response: response)
+            case .failure(let error):
+                presenter.presentError(error: error)
+            }
+        }
+    }
+    
+    
+
 }
+
 

@@ -12,8 +12,11 @@ import AFNetworking
 
 protocol IMovieDetailsViewController: AnyObject {
     func showDetail (viewModel: GetDetailsUseCase.ViewModel)
+//    func selectedMovie (viewModel: GetSelectedMovieUseCase.ViewModel)
+    func showSaveToCart (viewModel: AddToCartUseCase.ViewModel)
 }
 
+//var movies: [Any] = []
 class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var movieImageView: UIImageView!
@@ -22,11 +25,14 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieSummary: UITextView!
     @IBOutlet weak var language: UILabel!
+    @IBOutlet weak var addToCart: UIButton!
+    
     
 //    var movieDetail: String = ""
 //    var displayMovies: [IMovieDetailsViewModel] = []
     var id: Int!
 
+    var movieDetail: MovieDetails?
     var interactor: IDetailInteractor!
 
     override func viewDidLoad() {
@@ -39,21 +45,24 @@ class MovieDetailsViewController: UIViewController {
         
         getDetail(id: id)
 //        print(id)
-//        let index = displayMovies.firstIndex{$0 === movieDetail}movieImageView.setImageWith(posterUrl!)
         
-//        movieTitle.text = movieDetails.title as? String
-//        movieTitle.sizeToFit()
-//
-//        let releaseDate = movieDetails.releaseDate as! String
-//        releaseDate.text = ("Released On: \(releaseDate)")
-//
-//        let ratings = movieDetails.voteAverage as? NSNumber
-//        ratings.text = ("Ratings: \(ratings!.stringValue)/10")
-//
-//        movieSummary.text = movieDetails.overview as? String
-//        movieSummary.sizeToFit()
+
+        
 //
     }
+        
+
+
+    
+
+    @IBAction func addToCart(_ sender: UIButton) {
+        
+        
+
+   
+        
+    }
+    
 
 }
 
@@ -61,26 +70,32 @@ extension MovieDetailsViewController: IMovieDetailsViewController {
     
     func showDetail(viewModel: GetDetailsUseCase.ViewModel) {
         
-        let detailViewModel = viewModel.details
-//        print(detailViewModel)
-//        let  backdropURL = movieDetails.backdropURL
+        let movieDetails = viewModel.details
+//        self.movieDetail = movieDetails
+////        selectedPoster = detailViewModel?.posterURL
+////        print(detailViewModel)
+////        let  backdropURL = movieDetails.backdropURL
+////
+//      DispatchQueue.main.async {
+//        self.movieTitle.text = movieDetails?.title
+//        self.movieSummary.text = movieDetails?.overview
+//        let backdropurl = movieDetails?.backdropURL
 //
-      DispatchQueue.main.async {
-        self.movieTitle.text = detailViewModel?.title
-        self.movieSummary.text = detailViewModel?.overview
-        let backdropurl = detailViewModel?.backdropURL
-
-        self.movieImageView.setImageWith(backdropurl!)
-        self.ratings.text = detailViewModel?.voteAveragePercentText
-        self.releaseDate.text = detailViewModel?.releaseDate
-        self.language.text = detailViewModel?.originalLanguage
-    }
+//        self.movieImageView.setImageWith(backdropurl!)
+//        self.ratings.text = movieDetails?.voteAveragePercentText
+//        self.releaseDate.text = movieDetails?.releaseDate
+//        self.language.text = movieDetails?.originalLanguage
+    
         
 //        releaseDate.text = movieDetails.releaseDate
 //        ratings.text = movieDetails.voteAverage
 
 
     }
+    func showSaveToCart(viewModel: AddToCartUseCase.ViewModel) {
+        print("success")
+    }
+    
     
     
 }
@@ -94,3 +109,11 @@ extension MovieDetailsViewController {
     }
     
 }
+
+//extension SearchViewController {
+//    func getSearch(id: Int) {
+//        let request = GetDetailsUseCase.Request(id: id)
+//        interactor?.getDetail(request: request)
+//    }
+    
+//}

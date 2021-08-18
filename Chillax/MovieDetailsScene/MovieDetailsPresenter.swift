@@ -10,6 +10,7 @@ import Foundation
 protocol IDetailPresenter {
     func presentDetails(response: GetDetailsUseCase.Response)
     func presentError(error: Error)
+    func presentMoviesInCart(response: AddToCartUseCase.Response)
 }
 
 struct DetailPresenter {
@@ -24,12 +25,17 @@ struct DetailPresenter {
 
 extension DetailPresenter: IDetailPresenter {
     func presentDetails(response: GetDetailsUseCase.Response) {
-        let movie = MovieDetailsViewModel (movieDetails: response.details)
+        let movie = MovieDetailsViewModel (movieDetail: response.details)
         let viewModel = GetDetailsUseCase.ViewModel(details: movie)
         viewController?.showDetail(viewModel: viewModel)
 
     }
     
     func presentError(error: Error) {
+    }
+    
+    func presentMoviesInCart(response: AddToCartUseCase.Response){
+        let viewModel = AddToCartUseCase.ViewModel(isSuccess: response.isSuccess)
+        viewController?.showSaveToCart(viewModel: viewModel)
     }
 }
