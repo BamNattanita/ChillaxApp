@@ -26,7 +26,7 @@ struct DetailPresenter {
 extension DetailPresenter: IDetailPresenter {
     func presentDetails(response: GetDetailsUseCase.Response) {
         let movie = MovieDetailsViewModel (movieDetail: response.details)
-        let viewModel = GetDetailsUseCase.ViewModel(details: movie)
+        let viewModel = GetDetailsUseCase.ViewModel(item: movie)
         viewController?.showDetail(viewModel: viewModel)
 
     }

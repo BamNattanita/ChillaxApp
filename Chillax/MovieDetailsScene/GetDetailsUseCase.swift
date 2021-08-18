@@ -17,6 +17,6 @@ enum GetDetailsUseCase {
     }
     
     struct ViewModel {
-        var details: IMovieDetailsViewModel?
+        var item: IMovieDetailsViewModel?
     }
 }

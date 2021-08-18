@@ -26,6 +26,7 @@
 		4899389C26CA1C46000604C2 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899389B26CA1C46000604C2 /* MovieTableViewCell.swift */; };
 		4899389E26CABBE0000604C2 /* SearchMovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899389D26CABBE0000604C2 /* SearchMovieRouter.swift */; };
 		489938A226CCCED1000604C2 /* AddToCartUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938A126CCCED1000604C2 /* AddToCartUseCase.swift */; };
+		489938A426CD03E9000604C2 /* BasketWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938A326CD03E9000604C2 /* BasketWorker.swift */; };
 		48B05E6126B8F56C004F9349 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E6026B8F56C004F9349 /* AppDelegate.swift */; };
 		48B05E6326B8F56C004F9349 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E6226B8F56C004F9349 /* SceneDelegate.swift */; };
 		48B05E6526B8F56C004F9349 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B05E6426B8F56C004F9349 /* HomeViewController.swift */; };
@@ -69,6 +70,7 @@
 		4899389B26CA1C46000604C2 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		4899389D26CABBE0000604C2 /* SearchMovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieRouter.swift; sourceTree = "<group>"; };
 		489938A126CCCED1000604C2 /* AddToCartUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartUseCase.swift; sourceTree = "<group>"; };
+		489938A326CD03E9000604C2 /* BasketWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketWorker.swift; sourceTree = "<group>"; };
 		48B05E5D26B8F56C004F9349 /* Chillax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chillax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B05E6026B8F56C004F9349 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48B05E6226B8F56C004F9349 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				48B05E8626B9484A004F9349 /* Model */,
 				48B05E8526B94842004F9349 /* UseCases */,
 				48B05E7B26B9464F004F9349 /* BasketViewController.swift */,
+				489938A326CD03E9000604C2 /* BasketWorker.swift */,
 			);
 			path = BasketScene;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				48B05E9A26BB11D8004F9349 /* HomeRouter.swift in Sources */,
 				48B05E9826BB11C3004F9349 /* HomeWorker.swift in Sources */,
 				48B05E9C26BB11EF004F9349 /* HomeRemoteStore.swift in Sources */,
+				489938A426CD03E9000604C2 /* BasketWorker.swift in Sources */,
 				48B05E8A26B95308004F9349 /* MovieCollectionViewCell.swift in Sources */,
 				48822FF026C3BA6D00F28AEC /* MovieDetailsRemoteStore.swift in Sources */,
 				4899388C26C99563000604C2 /* SearchMovieModel.swift in Sources */,
