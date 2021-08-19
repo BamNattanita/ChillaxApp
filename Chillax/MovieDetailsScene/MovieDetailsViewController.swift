@@ -85,7 +85,7 @@ extension MovieDetailsViewController: IMovieDetailsViewController {
 
     }
     func showSaveToCart(viewModel: AddToCartUseCase.ViewModel) {
-        print("success")
+//        print("success")
         let basketStoreKey = "basketMovies"
         let data = UserDefaults.standard.data(forKey: basketStoreKey)
         print(data)

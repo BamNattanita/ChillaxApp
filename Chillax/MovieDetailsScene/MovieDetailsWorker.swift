@@ -26,7 +26,8 @@ extension DetailWorker: IDetailWorker {
     
     func addToCart (movieDetails: MovieDetails, completion: @escaping (Result<Bool, Error>) -> Void){
         var moviesInCart = loadCart()
-        print(moviesInCart.count)
+//        print(movieDetails)
+        print(moviesInCart)
         moviesInCart.append(movieDetails)
         UserDefaults.standard.set(try? PropertyListEncoder().encode(moviesInCart), forKey: basketStoreKey)
 //        UserDefaults.standard.setValue(moviesInCart, forKey: basketStoreKey)
@@ -41,14 +42,11 @@ extension DetailWorker: IDetailWorker {
                     return []
                 }
                 return movies
-//                let decoder = JSONDecoder()
-//                guard let movies = try? decoder.decode([MovieDetails].self, from: data) else {
-//                    return []
-//                }
-//                return movies
             }
         return []
     }
+    
+
 }
 
 

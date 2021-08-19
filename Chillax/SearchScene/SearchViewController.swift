@@ -96,16 +96,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 //        cell.day.text = text
         let movieTitle = movieList.title
         let posterurl = movieLists[indexPath.row].posterURL
-        let backdropurl = movieLists[indexPath.row].backdropURL
+//        let backdropurl = movieLists[indexPath.row].backdropURL
 
-//        print(movieTitle)
+//        print(movieList.title)
         
         cell.titleLabel?.text = movieTitle
         
 //        cell.TitleNameTable.sizeToFit()
         
 //        cell.textLabel?.text = movieTitle
-        cell.moviePoster?.setImageWith(backdropurl!)
+        cell.moviePoster?.setImageWith(posterurl!)
         return cell
     }
     
@@ -120,6 +120,7 @@ extension SearchViewController: ISearchMovieViewController {
     func showSearch(viewModel: GetSearchMovieUseCase.ViewModel) {
 
         self.movieLists = viewModel.movies ?? []
+//        print("movie \(self.movieLists) ")
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
