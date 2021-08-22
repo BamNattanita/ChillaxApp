@@ -12,6 +12,8 @@ protocol IBasketInteractor {
 //    func saveMovie(request: AddToCartUseCase.Request)
     func moviesInCart()
     func deleteMoviesInCart()
+    func saveMovieToCart(request: AddMovieToCartUseCase.Request)
+    func checkOutCart(request: CheckOutUseCase.Request)
 }
 
 struct BasketInteractor {
@@ -43,6 +45,34 @@ extension BasketInteractor: IBasketInteractor {
                 presenter.presentError(error: error)
             }
         }
+    }
+    
+    func saveMovieToCart(request: AddMovieToCartUseCase.Request) {
+        worker.addMovieToCart(movieDetails: request.movieDetails ) { result in
+            switch result {
+            case .success(let isSuccess):
+                let response = AddMovieToCartUseCase.Response( isSuccess: isSuccess)
+                presenter.presentMovieInCart(response: response)
+                print(response)
+            case .failure(let error):
+                presenter.presentError(error: error)
+            }
+        }
+//        print(request)
+    }
+    
+    func checkOutCart(request: CheckOutUseCase.Request) {
+        worker.checkOutMoviesInCart(movieDetails: request.movieDetails ) { result in
+            switch result {
+            case .success(let isSuccess):
+                let response = CheckOutUseCase.Response( isSuccess: isSuccess)
+                presenter.presentCheckOut(response: response)
+//                print(response)
+            case .failure(let error):
+                presenter.presentError(error: error)
+            }
+        }
+//        print(request)
     }
     
     

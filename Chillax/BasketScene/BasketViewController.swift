@@ -11,18 +11,20 @@ import AFNetworking
 
 protocol IBasketViewController: AnyObject {
     func showMoviesInCart (viewModel: BasketUseCase.ViewModel)
+    func showSaveMovieToCart(viewModel: AddMovieToCartUseCase.ViewModel)
+    func showCheckOut(viewModel: CheckOutUseCase.ViewModel)
 }
 
 class BasketViewController: UIViewController {
 
     
 
-//    @IBOutlet weak var basketTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
     
 
     var interactor: IBasketInteractor!
     var movieLists: [MovieDetails] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,24 +40,38 @@ class BasketViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+//        navigationItem.leftBarButtonItem = editButtonItem
+        
+//        tableView.allowsMultipleSelectionDuringEditing = true
+//        tableView.setEditing(true, animated: false)
+
+
+        
 //        tableView.register(BasketMovieTableViewCell.self, forCellReuseIdentifier: "BasketMovieTableViewCell")
         
 //        moviesInCart()
-        interactor?.moviesInCart()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.moviesInCart()
     }
     
     @IBAction func deleteButton(_ sender: UIButton) {
         interactor?.deleteMoviesInCart()
         
     }
+    
+    @IBAction func checkoutButton(_ sender: UIButton) {
+        checkOutCart(movieDetails: movieLists)
+        interactor?.deleteMoviesInCart()
+        
+        
+        
+
+    }
 }
-
-
-
-
-
-
 
 
 extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
@@ -67,20 +83,13 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasketMovieTableViewCell", for: indexPath) as! BasketMovieTableViewCell
         let movieList = movieLists[indexPath.row]
-//        let text = movieList.date
-//        cell.day.text = text
         let movieTitle = movieList.title
-        let posterurl = movieLists[indexPath.row].posterURL
-//        let backdropurl = movieLists[indexPath.row].backdropURL
-
+//        let posterurl = movieLists[indexPath.row].posterURL
+        let backdropurl = movieLists[indexPath.row].backdropURL
 //        print(posterurl)
-
         cell.basketMovieTitle?.text = movieTitle
-
 //        cell.TitleNameTable.sizeToFit()
-
-//        cell.textLabel?.text = movieTitle
-        cell.basketMovieImage?.setImageWith(posterurl)
+        cell.basketMovieImage?.setImageWith(backdropurl)
         return cell
     }
     
@@ -95,7 +104,18 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             tableView.beginUpdates()
+//            print(movieLists[indexPath.row])
+//            resaveMovieToCart(movieDetails: movieLists[indexPath.row])
             movieLists.remove(at: indexPath.row)
+            resaveMovieToCart(movieDetails: movieLists)
+
+            
+            
+//            save new list to database here
+//            print(movieLists)
+            
+            
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
@@ -106,27 +126,47 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension BasketViewController: IBasketViewController{
 
-
     func showMoviesInCart (viewModel: BasketUseCase.ViewModel) {
-
         self.movieLists = viewModel.movies
-        print("movie \(self.movieLists) ")
-        
+//        print("movie \(self.movieLists) ")
         DispatchQueue.main.async {
-
             self.tableView.reloadData()
 //            print("bam")
         }
-
     }
     
-
+    func showSaveMovieToCart(viewModel: AddMovieToCartUseCase.ViewModel) {
+//        print("success")
+        let basketStoreKey = "basketMovies"
+        let data = UserDefaults.standard.data(forKey: basketStoreKey)
+//        print(data)
+    }
+    
+    func showCheckOut(viewModel: CheckOutUseCase.ViewModel) {
+        print("success")
+//        let basketStoreKey = "basketMovies"
+//        let data = UserDefaults.standard.data(forKey: basketStoreKey)
+//        print(data)
+    }
 }
 //
 //
 //
 //
 ////MARK: - Interactor
+
+@IBDesignable extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set {
+              layer.cornerRadius = newValue
+              layer.masksToBounds = (newValue > 0)
+            
+            
+        }
+    }
+}
+
 //
 //extension BasketViewController {
 //    func moviesInCart() {
@@ -141,15 +181,21 @@ extension BasketViewController: IBasketViewController{
 //    }
 //}
 //
-//extension SearchViewController {
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "movieToDetail" {
-//            let cell = sender as! MovieTableViewCell
-//            let indexPath = tableView.indexPath(for: cell)
-//            let id = movieLists[indexPath!.row].id
-//            router.openMovieDetailPage(segue: segue, id: id)
-//            print(id)
-//        }
-//    }
-//}
+
 //
+extension BasketViewController {
+    func resaveMovieToCart(movieDetails: [MovieDetails]) {
+        let request = AddMovieToCartUseCase.Request(movieDetails: movieDetails)
+        interactor?.saveMovieToCart(request: request)
+//        print("savemovie: \(movieDetails)")
+    }
+    
+    func checkOutCart(movieDetails: [MovieDetails]) {
+        let request = CheckOutUseCase.Request(movieDetails: movieDetails)
+        interactor?.checkOutCart(request: request)
+        
+    }
+//
+}
+
+

@@ -51,11 +51,18 @@ class MovieDetailsViewController: UIViewController {
         
         if let movie = movieDetail {
             saveMovieToCart(movieDetails: movie)
+            let alert = UIAlertController(title: "Add To Cart Successfully!", message: "'\(movie.title)' has been added to cart.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
         }
         
-    }
 
-}
+            }
+        }
+        
+    
+
+
 
 extension MovieDetailsViewController: IMovieDetailsViewController {
     
@@ -88,7 +95,7 @@ extension MovieDetailsViewController: IMovieDetailsViewController {
 //        print("success")
         let basketStoreKey = "basketMovies"
         let data = UserDefaults.standard.data(forKey: basketStoreKey)
-        print(data)
+//        print(data)
     }
     
     

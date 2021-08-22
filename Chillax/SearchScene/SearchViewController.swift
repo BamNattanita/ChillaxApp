@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var SearchText: UITextField!
 //    @IBOutlet weak var MovieName: UILabel!
     
+    
 //    var title: String!
     var router: ISearchRouter!
     var interactor: ISearchMovieInteractor!
@@ -45,6 +46,7 @@ class SearchViewController: UIViewController {
         SearchText.placeholder = "Search Movie"
         tableView.dataSource = self
         tableView.delegate = self
+        getSearch(title: "boss")
         
 //        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: "MovieTableViewCell")
         
@@ -60,6 +62,7 @@ class SearchViewController: UIViewController {
         }
     }
     
+    
 }
 
 extension SearchViewController: UITextFieldDelegate {
@@ -73,7 +76,7 @@ extension SearchViewController: UITextFieldDelegate {
         if let text = SearchText.text {
             getSearch(title: text)
         }
-        SearchBar.isHidden = true
+//        SearchBar.isHidden = true
 //        MovieName.isHidden = false
 //        MovieImage.isHidden = false
 
@@ -149,7 +152,22 @@ extension SearchViewController {
             let indexPath = tableView.indexPath(for: cell)
             let id = movieLists[indexPath!.row].id
             router.openMovieDetailPage(segue: segue, id: id)
-            print(id)
+//            print(id)
         }
     }
 }
+
+//@IBDesignable extension UIImageView {
+//    @IBInspectable var cornerRadius: CGFloat {
+//        get { return layer.cornerRadius }
+//        set {
+//              layer.cornerRadius = newValue
+//
+//              // If masksToBounds is true, subviews will be
+//              // clipped to the rounded corners.
+//              layer.masksToBounds = (newValue > 0)
+//            
+//            
+//        }
+//    }
+//}

@@ -27,7 +27,7 @@ extension DetailWorker: IDetailWorker {
     func addToCart (movieDetails: MovieDetails, completion: @escaping (Result<Bool, Error>) -> Void){
         var moviesInCart = loadCart()
 //        print(movieDetails)
-        print(moviesInCart)
+//        print(moviesInCart)
         moviesInCart.append(movieDetails)
         UserDefaults.standard.set(try? PropertyListEncoder().encode(moviesInCart), forKey: basketStoreKey)
 //        UserDefaults.standard.setValue(moviesInCart, forKey: basketStoreKey)
