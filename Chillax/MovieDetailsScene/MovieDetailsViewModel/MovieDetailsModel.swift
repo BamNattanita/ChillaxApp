@@ -17,6 +17,7 @@ struct MovieDetails: Codable {
     let voteAverage: Double
     let releaseDate: String
     let originalLanguage: String
+    let status: String
     var posterURL: URL {
        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
    }
@@ -28,5 +29,9 @@ struct MovieDetails: Codable {
     var voteAveragePercentText: String {
        return "\(Int(voteAverage * 10))% / 100%"
    }
+    
+    var voteRating: String {
+        return "\(Double(voteAverage)) / 10"
+    }
     
 }

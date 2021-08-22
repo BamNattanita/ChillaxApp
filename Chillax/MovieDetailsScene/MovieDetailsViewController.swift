@@ -25,6 +25,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieSummary: UITextView!
     @IBOutlet weak var language: UILabel!
     @IBOutlet weak var addToCart: UIButton!
+//    @IBOutlet weak var movieStatus: UILabel!
     
     
 //    var movieDetail: String = ""
@@ -43,7 +44,10 @@ class MovieDetailsViewController: UIViewController {
         interactor = DetailInteractor(presenter: presenter, worker: worker)
         
         getDetail(id: id)
-
+        
+        movieSummary.isScrollEnabled = false
+        movieSummary.translatesAutoresizingMaskIntoConstraints = true
+        movieSummary.sizeToFit()
     }
     
 
@@ -60,6 +64,12 @@ class MovieDetailsViewController: UIViewController {
             }
         }
         
+func adjustUITextViewHeight(arg : UITextView)
+{
+    arg.translatesAutoresizingMaskIntoConstraints = true
+    arg.sizeToFit()
+    arg.isScrollEnabled = false
+}
     
 
 
@@ -83,6 +93,7 @@ extension MovieDetailsViewController: IMovieDetailsViewController {
         self.movieImageView.setImageWith(backdropurl!)
         self.ratings.text = movieDetails?.voteAveragePercentText
         self.releaseDate.text = movieDetails?.releaseDate
+//        self.movieStatus.text = movieDetails?.status
 //        self.language.text = movieDetails?.originalLanguage
     
         

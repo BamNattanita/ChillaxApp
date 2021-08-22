@@ -100,10 +100,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let movieTitle = movieList.title
         let posterurl = movieLists[indexPath.row].posterURL
 //        let backdropurl = movieLists[indexPath.row].backdropURL
+        let movieRating = movieList.voteRating
+        let movieGenre = movieList.genres
+        let movieDate = movieList.releaseDate
 
 //        print(movieList.title)
-        
+//        cell.movieGenre?.text = movieGenre
+        cell.movieRating?.text = movieRating
         cell.titleLabel?.text = movieTitle
+        cell.movieDate?.text = movieDate
+        
         
 //        cell.TitleNameTable.sizeToFit()
         
@@ -166,8 +172,8 @@ extension SearchViewController {
 //              // If masksToBounds is true, subviews will be
 //              // clipped to the rounded corners.
 //              layer.masksToBounds = (newValue > 0)
-//            
-//            
+//
+//
 //        }
 //    }
 //}

@@ -11,11 +11,13 @@ protocol ISearchMovieViewModel {
 
     var id: Int { get }
     var title: String { get }
-//    var releaseDate: String { get }
+    var releaseDate: String { get }
     var posterURL: URL? { get }
     var backdropURL: URL? { get }
 //    var overview: String {get}
-//    var voteAverage: Double {get}
+    var voteAverage: Double {get}
+    var voteRating: String {get}
+    var genres: [Genre]? {get}
 //    var voteAveragePercentText: String {get}
 
 }
@@ -24,13 +26,16 @@ struct SearchMovieViewModel : ISearchMovieViewModel {
     
     let id: Int
     let title: String
-//    let releaseDate: String
+    let releaseDate: String
     let posterURL: URL?
     let backdropURL: URL?
 //    let overview: String
 //    let voteAverage: Double
 //    let voteAveragePercentText: String
 //    let voteAverage: Double
+    let genres: [Genre]?
+    let voteAverage: Double
+    let voteRating: String
     
 }
 
@@ -39,9 +44,12 @@ extension SearchMovieViewModel {
         if let searchMovie = searchMovie {
         self.id = searchMovie.id
         self.title = searchMovie.title
-//        releaseDate = searchMovie.releaseDate
+        releaseDate = searchMovie.releaseDate
         posterURL = searchMovie.posterURL
         backdropURL = searchMovie.backdropURL
+        voteRating = searchMovie.voteRating
+        voteAverage = searchMovie.voteAverage
+        genres = searchMovie.genres
 //        overview = searchMovie.overview
 //        voteAverage = searchMovie.voteAverage
 //        voteAveragePercentText = searchMovie.voteAveragePercentText

@@ -66,6 +66,9 @@ class BasketViewController: UIViewController {
     @IBAction func checkoutButton(_ sender: UIButton) {
         checkOutCart(movieDetails: movieLists)
         interactor?.deleteMoviesInCart()
+        let alert = UIAlertController(title: "Check Out Successfully!", message: "Your cart has been checked out.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
         
         
         
@@ -84,6 +87,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasketMovieTableViewCell", for: indexPath) as! BasketMovieTableViewCell
         let movieList = movieLists[indexPath.row]
         let movieTitle = movieList.title
+
 //        let posterurl = movieLists[indexPath.row].posterURL
         let backdropurl = movieLists[indexPath.row].backdropURL
 //        print(posterurl)
