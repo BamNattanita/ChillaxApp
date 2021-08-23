@@ -27,8 +27,6 @@
 		4899389E26CABBE0000604C2 /* SearchMovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899389D26CABBE0000604C2 /* SearchMovieRouter.swift */; };
 		489938A226CCCED1000604C2 /* AddToCartUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938A126CCCED1000604C2 /* AddToCartUseCase.swift */; };
 		489938A426CD03E9000604C2 /* BasketWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938A326CD03E9000604C2 /* BasketWorker.swift */; };
-		489938A626CE6394000604C2 /* BasketAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938A526CE6393000604C2 /* BasketAPIService.swift */; };
-		489938A826CE68B3000604C2 /* BasketRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938A726CE68B3000604C2 /* BasketRemoteStore.swift */; };
 		489938AA26CE6F06000604C2 /* BasketInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938A926CE6F06000604C2 /* BasketInteractor.swift */; };
 		489938AC26CE6F18000604C2 /* BasketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938AB26CE6F18000604C2 /* BasketPresenter.swift */; };
 		489938AE26CE6F36000604C2 /* BasketUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489938AD26CE6F36000604C2 /* BasketUseCase.swift */; };
@@ -79,8 +77,6 @@
 		4899389D26CABBE0000604C2 /* SearchMovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieRouter.swift; sourceTree = "<group>"; };
 		489938A126CCCED1000604C2 /* AddToCartUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartUseCase.swift; sourceTree = "<group>"; };
 		489938A326CD03E9000604C2 /* BasketWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketWorker.swift; sourceTree = "<group>"; };
-		489938A526CE6393000604C2 /* BasketAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketAPIService.swift; sourceTree = "<group>"; };
-		489938A726CE68B3000604C2 /* BasketRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRemoteStore.swift; sourceTree = "<group>"; };
 		489938A926CE6F06000604C2 /* BasketInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketInteractor.swift; sourceTree = "<group>"; };
 		489938AB26CE6F18000604C2 /* BasketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketPresenter.swift; sourceTree = "<group>"; };
 		489938AD26CE6F36000604C2 /* BasketUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketUseCase.swift; sourceTree = "<group>"; };
@@ -137,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				48822FE526C2D79800F28AEC /* MovieDetailsViewModel.swift */,
-				48822FF126C3D68D00F28AEC /* MovieDetailsModel.swift */,
 			);
 			path = MovieDetailsViewModel;
 			sourceTree = "<group>";
@@ -148,6 +143,23 @@
 				48822FF626C615AE00F28AEC /* MovieDetailsAPIService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		48B0396B26D351BB0064BA9D /* MoveDetailsModel */ = {
+			isa = PBXGroup;
+			children = (
+				48822FF126C3D68D00F28AEC /* MovieDetailsModel.swift */,
+			);
+			path = MoveDetailsModel;
+			sourceTree = "<group>";
+		};
+		48B0396C26D351EE0064BA9D /* MoveDetailsUseCases */ = {
+			isa = PBXGroup;
+			children = (
+				489938A126CCCED1000604C2 /* AddToCartUseCase.swift */,
+				48822FF326C3DA9600F28AEC /* GetDetailsUseCase.swift */,
+			);
+			path = MoveDetailsUseCases;
 			sourceTree = "<group>";
 		};
 		48B05E5426B8F56C004F9349 = {
@@ -224,11 +236,9 @@
 		48B05E7826B945B0004F9349 /* BasketScene */ = {
 			isa = PBXGroup;
 			children = (
-				48B05E8826B94860004F9349 /* Services */,
 				48B05E8526B94842004F9349 /* UseCases */,
 				48B05E7B26B9464F004F9349 /* BasketViewController.swift */,
 				489938A326CD03E9000604C2 /* BasketWorker.swift */,
-				489938A726CE68B3000604C2 /* BasketRemoteStore.swift */,
 				489938A926CE6F06000604C2 /* BasketInteractor.swift */,
 				489938AB26CE6F18000604C2 /* BasketPresenter.swift */,
 				48B0396326CEBE8D0064BA9D /* BasketMovieTableViewCell.swift */,
@@ -310,26 +320,18 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		48B05E8826B94860004F9349 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				489938A526CE6393000604C2 /* BasketAPIService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		48E882E326BC6ECB009F7E81 /* MovieDetailsScene */ = {
 			isa = PBXGroup;
 			children = (
 				48822FF526C6158300F28AEC /* Services */,
 				48822FE426C2D77900F28AEC /* MovieDetailsViewModel */,
+				48B0396B26D351BB0064BA9D /* MoveDetailsModel */,
 				48E882E426BC6EF8009F7E81 /* MovieDetailsViewController.swift */,
 				48822FE726C3178C00F28AEC /* MovieDetailsInteractor.swift */,
 				48822FE926C317A300F28AEC /* MovieDetailsPresenter.swift */,
 				48822FEB26C317B500F28AEC /* MovieDetailsWorker.swift */,
 				48822FEF26C3BA6D00F28AEC /* MovieDetailsRemoteStore.swift */,
-				48822FF326C3DA9600F28AEC /* GetDetailsUseCase.swift */,
-				489938A126CCCED1000604C2 /* AddToCartUseCase.swift */,
+				48B0396C26D351EE0064BA9D /* MoveDetailsUseCases */,
 			);
 			path = MovieDetailsScene;
 			sourceTree = "<group>";
@@ -471,7 +473,6 @@
 				4899389226C9959C000604C2 /* SearchMovieInteractor.swift in Sources */,
 				48B05E9226BB1164004F9349 /* GetMoviesUseCase.swift in Sources */,
 				48B05E9626BB11AC004F9349 /* HomePresenter.swift in Sources */,
-				489938A826CE68B3000604C2 /* BasketRemoteStore.swift in Sources */,
 				48822FF726C615AE00F28AEC /* MovieDetailsAPIService.swift in Sources */,
 				48B05E7C26B9464F004F9349 /* BasketViewController.swift in Sources */,
 				48822FE826C3178C00F28AEC /* MovieDetailsInteractor.swift in Sources */,
@@ -481,7 +482,6 @@
 				48B05E8E26BB111A004F9349 /* HomeAPIService.swift in Sources */,
 				48B0396A26D2B8930064BA9D /* CheckOutUseCase.swift in Sources */,
 				48822FF426C3DA9700F28AEC /* GetDetailsUseCase.swift in Sources */,
-				489938A626CE6394000604C2 /* BasketAPIService.swift in Sources */,
 				48B05E6126B8F56C004F9349 /* AppDelegate.swift in Sources */,
 				4899389C26CA1C46000604C2 /* MovieTableViewCell.swift in Sources */,
 				4899389A26C99730000604C2 /* SearchMovieAPIService.swift in Sources */,
