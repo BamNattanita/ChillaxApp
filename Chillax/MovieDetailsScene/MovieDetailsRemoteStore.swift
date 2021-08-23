@@ -11,11 +11,11 @@ import Foundation
 enum RemoteStoreErrors: Error {
     case noResult
 }
+
 protocol IDetailRemoteStore {
     func details(id: Int, completion: @escaping (Result<MovieDetails?, Error>) -> Void)
     
 }
-//print(details(id: Int))
 
 class DetailRemoteStore: IDetailRemoteStore {
     
@@ -60,7 +60,6 @@ class DetailRemoteStore: IDetailRemoteStore {
                 completion(.failure(RemoteStoreError.noResult))
                 return
             }
-//            print(String(decoding: data, as: UTF8.self))
             do {
                 let movieDetail = try self.jsonDecoder.decode(MovieDetails.self, from: data)
                 completion(.success(movieDetail))

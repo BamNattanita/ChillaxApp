@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct MovieDetails: Codable {
     let id : Int
     let title : String

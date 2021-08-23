@@ -8,6 +8,7 @@
 import Foundation
 
 enum GetDetailsUseCase {
+    
     struct Request {
         var id: Int
     }

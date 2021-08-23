@@ -19,7 +19,6 @@ struct HomePresenter {
     init(viewController: IHomeViewController) {
         self.viewController = viewController
     }
-
 }
 
 extension HomePresenter: IHomePresenter {
@@ -27,10 +26,10 @@ extension HomePresenter: IHomePresenter {
         let movies = response.movies.compactMap { MovieViewModel(movie: $0) }
         let viewModel = GetMoviesUseCase.ViewModel(movies: movies)
         viewController?.showMovies(viewModel: viewModel)
-
     }
     
     func presentError(error: Error) {
+    
     }
 }
 

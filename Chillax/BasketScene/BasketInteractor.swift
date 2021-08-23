@@ -8,8 +8,6 @@
 import Foundation
 
 protocol IBasketInteractor {
-//    func getDetail(request: GetDetailsUseCase.Request)
-//    func saveMovie(request: AddToCartUseCase.Request)
     func moviesInCart()
     func deleteMoviesInCart()
     func saveMovieToCart(request: AddMovieToCartUseCase.Request)
@@ -28,7 +26,6 @@ extension BasketInteractor: IBasketInteractor {
             case .success(let loadMovies):
                 let response = BasketUseCase.Response( movies: loadMovies)
                 presenter.presentMovies(response: response)
-//                print(response)
             case .failure(let error):
                 presenter.presentError(error: error)
             }
@@ -58,7 +55,6 @@ extension BasketInteractor: IBasketInteractor {
                 presenter.presentError(error: error)
             }
         }
-//        print(request)
     }
     
     func checkOutCart(request: CheckOutUseCase.Request) {
@@ -67,16 +63,11 @@ extension BasketInteractor: IBasketInteractor {
             case .success(let isSuccess):
                 let response = CheckOutUseCase.Response( isSuccess: isSuccess)
                 presenter.presentCheckOut(response: response)
-//                print(response)
             case .failure(let error):
                 presenter.presentError(error: error)
             }
         }
-//        print(request)
     }
-    
-    
-
 }
 
 

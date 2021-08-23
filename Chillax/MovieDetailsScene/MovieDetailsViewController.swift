@@ -23,13 +23,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var ratings: UILabel!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieSummary: UITextView!
-    @IBOutlet weak var language: UILabel!
     @IBOutlet weak var addToCart: UIButton!
-//    @IBOutlet weak var movieStatus: UILabel!
-    
-    
-//    var movieDetail: String = ""
-//    var displayMovies: [IMovieDetailsViewModel] = []
+
     var id: Int!
 
     var movieDetail: MovieDetails?
@@ -49,7 +44,6 @@ class MovieDetailsViewController: UIViewController {
         movieSummary.translatesAutoresizingMaskIntoConstraints = true
         movieSummary.sizeToFit()
     }
-    
 
     @IBAction func addToCart(_ sender: UIButton) {
         
@@ -59,8 +53,6 @@ class MovieDetailsViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
         }
-        
-
             }
         }
         
@@ -79,41 +71,26 @@ extension MovieDetailsViewController: IMovieDetailsViewController {
     func showDetail(viewModel: GetDetailsUseCase.ViewModel) {
         
         let movieDetails = viewModel.item?.movieDetail
-//        print(movieDetail?.title)
         self.movieDetail = movieDetails
-////        selectedPoster = detailViewModel?.posterURL
-////        print(detailViewModel)
-////        let  backdropURL = movieDetails.backdropURL
-////
+        
       DispatchQueue.main.async {
         self.movieTitle.text = movieDetails?.title
         self.movieSummary.text = movieDetails?.overview
         let backdropurl = movieDetails?.backdropURL
-//
         self.movieImageView.setImageWith(backdropurl!)
         self.ratings.text = movieDetails?.voteAveragePercentText
         self.releaseDate.text = movieDetails?.releaseDate
-//        self.movieStatus.text = movieDetails?.status
-//        self.language.text = movieDetails?.originalLanguage
-    
-        
-//        releaseDate.text = movieDetails.releaseDate
-//        ratings.text = movieDetails.voteAverage
       }
 
     }
+    
     func showSaveToCart(viewModel: AddToCartUseCase.ViewModel) {
-//        print("success")
-        let basketStoreKey = "basketMovies"
-        let data = UserDefaults.standard.data(forKey: basketStoreKey)
-//        print(data)
+        print("save success")
     }
     
     
     
 }
-
-//MARK: - Interactor
 
 extension MovieDetailsViewController {
     func getDetail(id: Int) {
@@ -127,7 +104,6 @@ extension MovieDetailsViewController {
     func saveMovieToCart(movieDetails: MovieDetails) {
         let request = AddToCartUseCase.Request(movieDetails: movieDetails)
         interactor?.saveMovie(request: request)
-//        print("savemovie: \(movieDetails)")
     }
     
 }

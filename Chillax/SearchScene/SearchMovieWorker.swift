@@ -15,11 +15,8 @@ struct SearchWorker {
     let searchremoteStore: SearchRemoteStore
 }
 
-// MARK: - IHomeWorker
 extension SearchWorker: ISearchMovieWorker {
     func getSearch( title: String, completion: @escaping (Result<SearchResultResponse?, Error>) -> Void) {
         searchremoteStore.search(title: title, completion: completion)
-//        print(title)
     }
-
 }

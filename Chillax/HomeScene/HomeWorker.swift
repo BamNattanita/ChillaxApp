@@ -15,7 +15,6 @@ struct HomeWorker {
     let remoteStore: HomeRemoteStore
 }
 
-// MARK: - IHomeWorker
 extension HomeWorker: IHomeWorker {
     func getMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
         remoteStore.movies(completion: completion)

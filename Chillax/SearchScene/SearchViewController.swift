@@ -17,22 +17,15 @@ protocol ISearchMovieViewController: AnyObject {
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    //    @IBOutlet weak var MovieImage: UIImageView!
     @IBOutlet weak var SearchBar: UIView!
     @IBOutlet weak var SearchText: UITextField!
-//    @IBOutlet weak var MovieName: UILabel!
     
-    
-//    var title: String!
     var router: ISearchRouter!
     var interactor: ISearchMovieInteractor!
     var movieLists: [ISearchMovieViewModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
         
         let presenter = SearchPresenter(viewController: self)
         let searchremoteStore = SearchRemoteStore()
@@ -48,10 +41,6 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         getSearch(title: "boss")
         
-//        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: "MovieTableViewCell")
-        
-        
-        
     }
 
     @IBAction func ShowSearchBar(_ sender: UIButton) {
@@ -61,8 +50,6 @@ class SearchViewController: UIViewController {
             SearchBar.isHidden = true
         }
     }
-    
-    
 }
 
 extension SearchViewController: UITextFieldDelegate {
@@ -76,44 +63,26 @@ extension SearchViewController: UITextFieldDelegate {
         if let text = SearchText.text {
             getSearch(title: text)
         }
-//        SearchBar.isHidden = true
-//        MovieName.isHidden = false
-//        MovieImage.isHidden = false
-
     }
-    
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(movieLists)
         return movieLists.count
     }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as! MovieTableViewCell
         let movieList = movieLists[indexPath.row]
-//        let text = movieList.date
-//        cell.day.text = text
         let movieTitle = movieList.title
         let posterurl = movieLists[indexPath.row].posterURL
-//        let backdropurl = movieLists[indexPath.row].backdropURL
         let movieRating = movieList.voteRating
-        let movieGenre = movieList.genres
         let movieDate = movieList.releaseDate
 
-//        print(movieList.title)
-//        cell.movieGenre?.text = movieGenre
         cell.movieRating?.text = movieRating
         cell.titleLabel?.text = movieTitle
         cell.movieDate?.text = movieDate
-        
-        
-//        cell.TitleNameTable.sizeToFit()
-        
-//        cell.textLabel?.text = movieTitle
         cell.moviePoster?.setImageWith(posterurl!)
         return cell
     }
@@ -124,30 +93,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchViewController: ISearchMovieViewController {
-
-
     func showSearch(viewModel: GetSearchMovieUseCase.ViewModel) {
-
         self.movieLists = viewModel.movies ?? []
-//        print("movie \(self.movieLists) ")
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-
     }
-    
 }
-
-
-
-
-//MARK: - Interactor
 
 extension SearchViewController {
     func getSearch(title: String) {
         let request = GetSearchMovieUseCase.Request(title: title)
         interactor?.getSearch(request: request)
-       
     }
 }
 
@@ -158,22 +115,7 @@ extension SearchViewController {
             let indexPath = tableView.indexPath(for: cell)
             let id = movieLists[indexPath!.row].id
             router.openMovieDetailPage(segue: segue, id: id)
-//            print(id)
         }
     }
 }
 
-//@IBDesignable extension UIImageView {
-//    @IBInspectable var cornerRadius: CGFloat {
-//        get { return layer.cornerRadius }
-//        set {
-//              layer.cornerRadius = newValue
-//
-//              // If masksToBounds is true, subviews will be
-//              // clipped to the rounded corners.
-//              layer.masksToBounds = (newValue > 0)
-//
-//
-//        }
-//    }
-//}

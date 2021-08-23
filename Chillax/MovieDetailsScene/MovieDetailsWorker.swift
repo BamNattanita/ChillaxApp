@@ -17,23 +17,16 @@ struct DetailWorker {
     let basketStoreKey = "basketMovies"
 }
 
-// MARK: - IHomeWorker
 extension DetailWorker: IDetailWorker {
     func getDetail( id: Int, completion: @escaping (Result<MovieDetails?, Error>) -> Void) {
         remoteStore.details(id: id, completion: completion)
     }
     
-    
     func addToCart (movieDetails: MovieDetails, completion: @escaping (Result<Bool, Error>) -> Void){
         var moviesInCart = loadCart()
-//        print(movieDetails)
-//        print(moviesInCart)
         moviesInCart.append(movieDetails)
         UserDefaults.standard.set(try? PropertyListEncoder().encode(moviesInCart), forKey: basketStoreKey)
-//        UserDefaults.standard.setValue(moviesInCart, forKey: basketStoreKey)
         completion(.success(true))
-
-        
     }
     
     func loadCart() -> [MovieDetails]{
@@ -45,8 +38,6 @@ extension DetailWorker: IDetailWorker {
             }
         return []
     }
-    
-
 }
 
 

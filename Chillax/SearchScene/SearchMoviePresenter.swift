@@ -16,7 +16,6 @@ struct SearchPresenter {
     weak var viewController: ISearchMovieViewController?
     var searches: [ISearchMovieViewModel] = []
     
-    
     init(viewController: ISearchMovieViewController) {
         self.viewController = viewController
     }
@@ -25,12 +24,9 @@ struct SearchPresenter {
 
 extension SearchPresenter: ISearchMoviePresenter {
     func presentSearch(response: GetSearchMovieUseCase.Response) {
-//        let searchmovie = SearchMovieViewModel (searchMovie: response.results)
         let searchmovie = response.results?.compactMap { SearchMovieViewModel(searchMovie: $0) }
         let viewModel = GetSearchMovieUseCase.ViewModel(movies: searchmovie)
         viewController?.showSearch(viewModel: viewModel)
-
-
     }
     
     func presentError(error: Error) {

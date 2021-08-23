@@ -12,7 +12,6 @@ protocol IHomeAPIService {
     )
 }
 
-
 class MovieService {
     
     var movieStore: IHomeAPIService
@@ -23,28 +22,8 @@ class MovieService {
     
     func movies(
         completion: @escaping (Result<[Movie]?, Error>) -> Void
-
     ) {
         movieStore.movies(completion: completion)
-
     }
 }
-
-//public enum ErrorResponse: String {
-//    case apiError
-//    case invalidEndpoint
-//    case invalidResponse
-//    case noData
-//    case serializationError
-//
-//    public var description: String {
-//        switch self {
-//        case .apiError: return "Error api"
-//        case .invalidEndpoint: return "Error endpoint"
-//        case .invalidResponse: return "Error response"
-//        case .noData: return "Error data"
-//        case .serializationError: return "Error serialization process"
-//        }
-//    }
-//}
 

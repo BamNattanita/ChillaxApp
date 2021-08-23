@@ -1,10 +1,10 @@
-////
-////  GetMoviesUseCase.swift
-////  Chillax
-////
-////  Created by Nattanita on 5/8/2564 BE.
-////
 //
+//  GetMoviesUseCase.swift
+//  Chillax
+//
+//  Created by Nattanita on 5/8/2564 BE.
+//
+
 import Foundation
 
 enum GetMoviesUseCase {

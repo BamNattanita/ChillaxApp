@@ -47,7 +47,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return displayMovies.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
@@ -63,8 +62,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-
-// MARK: - Interactor
 extension HomeViewController {
     func getMovies() {
         let request = GetMoviesUseCase.Request()
@@ -81,7 +78,7 @@ extension HomeViewController: IHomeViewController {
             self.collectionView.reloadData()
         }
             
-}
+    }
 }
 
 extension HomeViewController {
@@ -95,16 +92,3 @@ extension HomeViewController {
     }
 }
 
-//extension UIImageView {
-//    func applyshadowWithCorner(containerView : UIImageView, cornerRadious : CGFloat){
-//        containerView.clipsToBounds = false
-//        containerView.layer.shadowColor = UIColor.black.cgColor
-//        containerView.layer.shadowOpacity = 1
-//        containerView.layer.shadowOffset = CGSize.zero
-//        containerView.layer.shadowRadius = 10
-//        containerView.layer.cornerRadius = cornerRadious
-//        containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
-//        self.clipsToBounds = true
-//        self.layer.cornerRadius = cornerRadious
-//    }
-//}

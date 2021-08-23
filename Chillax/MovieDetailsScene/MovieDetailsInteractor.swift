@@ -36,16 +36,11 @@ extension DetailInteractor: IDetailInteractor {
             case .success(let isSuccess):
                 let response = AddToCartUseCase.Response( isSuccess: isSuccess)
                 presenter.presentMoviesInCart(response: response)
-//                print(response)
             case .failure(let error):
                 presenter.presentError(error: error)
             }
         }
-//        print(request)
     }
-    
-    
-
 }
 
 

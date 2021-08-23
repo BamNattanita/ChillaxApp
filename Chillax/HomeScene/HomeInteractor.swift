@@ -16,7 +16,6 @@ struct HomeInteractor {
     let worker: IHomeWorker
 }
 
-// MARK: - IHomeInteractor
 extension HomeInteractor: IHomeInteractor {
     func getMovies(request: GetMoviesUseCase.Request) {
         worker.getMovies { result in

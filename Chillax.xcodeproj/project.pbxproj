@@ -225,8 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				48B05E8826B94860004F9349 /* Services */,
-				48B05E8726B94857004F9349 /* ViewModel */,
-				48B05E8626B9484A004F9349 /* Model */,
 				48B05E8526B94842004F9349 /* UseCases */,
 				48B05E7B26B9464F004F9349 /* BasketViewController.swift */,
 				489938A326CD03E9000604C2 /* BasketWorker.swift */,
@@ -310,20 +308,6 @@
 				48B0396926D2B8920064BA9D /* CheckOutUseCase.swift */,
 			);
 			path = UseCases;
-			sourceTree = "<group>";
-		};
-		48B05E8626B9484A004F9349 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		48B05E8726B94857004F9349 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		48B05E8826B94860004F9349 /* Services */ = {

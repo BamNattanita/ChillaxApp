@@ -11,5 +11,6 @@ class BasketMovieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var basketMovieImage: UIImageView!
     @IBOutlet weak var basketMovieTitle: UILabel!
+    
 }
 

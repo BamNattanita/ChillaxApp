@@ -18,8 +18,7 @@ protocol IBasketPresenter {
 
 struct BasketPresenter {
     weak var viewController: IBasketViewController?
-//    var detail: [IMovieDetailsViewModel] = []
-//
+    
     init(viewController: IBasketViewController) {
         self.viewController = viewController
     }
@@ -30,7 +29,6 @@ extension BasketPresenter: IBasketPresenter {
     func presentMovies(response: BasketUseCase.Response) {
         let viewModel = BasketUseCase.ViewModel( movies : response.movies)
         viewController?.showMoviesInCart(viewModel: viewModel)
-
     }
     
     func presentError(error: Error) {
