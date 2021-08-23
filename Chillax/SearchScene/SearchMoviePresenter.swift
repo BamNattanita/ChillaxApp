@@ -15,7 +15,6 @@ protocol ISearchMoviePresenter {
 struct SearchPresenter {
     weak var viewController: ISearchMovieViewController?
     var searches: [ISearchMovieViewModel] = []
-    
     init(viewController: ISearchMovieViewController) {
         self.viewController = viewController
     }
@@ -28,7 +27,6 @@ extension SearchPresenter: ISearchMoviePresenter {
         let viewModel = GetSearchMovieUseCase.ViewModel(movies: searchmovie)
         viewController?.showSearch(viewModel: viewModel)
     }
-    
     func presentError(error: Error) {
     }
 }

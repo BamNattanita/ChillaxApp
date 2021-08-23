@@ -48,15 +48,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         let movie = displayMovies[indexPath.row]
         let title = movie.title
         let posterurl = displayMovies[indexPath.row].posterURL
-        
         cell.movieName.text = title
         cell.movieName.sizeToFit()
-        
         cell.movieImageView.setImageWith(posterurl!)
         return cell
     }
@@ -71,13 +68,11 @@ extension HomeViewController {
 
 // MARK: - IHomeViewController
 extension HomeViewController: IHomeViewController {
-
     func showMovies(viewModel: GetMoviesUseCase.ViewModel) {
         self.displayMovies = viewModel.movies
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-            
     }
 }
 
@@ -91,4 +86,3 @@ extension HomeViewController {
         }
     }
 }
-

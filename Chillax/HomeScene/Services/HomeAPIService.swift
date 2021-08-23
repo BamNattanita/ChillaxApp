@@ -26,4 +26,3 @@ class MovieService {
         movieStore.movies(completion: completion)
     }
 }
-

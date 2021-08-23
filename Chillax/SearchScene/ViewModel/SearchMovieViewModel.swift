@@ -19,8 +19,7 @@ protocol ISearchMovieViewModel {
     var genres: [Genre]? {get}
 }
 
-struct SearchMovieViewModel : ISearchMovieViewModel {
-    
+struct SearchMovieViewModel: ISearchMovieViewModel {
     let id: Int
     let title: String
     let releaseDate: String

@@ -16,7 +16,6 @@ protocol IDetailPresenter {
 struct DetailPresenter {
     weak var viewController: IMovieDetailsViewController?
     var detail: [IMovieDetailsViewModel] = []
-    
     init(viewController: IMovieDetailsViewController) {
         self.viewController = viewController
     }
@@ -25,7 +24,7 @@ struct DetailPresenter {
 
 extension DetailPresenter: IDetailPresenter {
     func presentDetails(response: GetDetailsUseCase.Response) {
-        let movie = MovieDetailsViewModel (movieDetail: response.details)
+        let movie = MovieDetailsViewModel(movieDetail: response.details)
         let viewModel = GetDetailsUseCase.ViewModel(item: movie)
         viewController?.showDetail(viewModel: viewModel)
 
@@ -34,7 +33,7 @@ extension DetailPresenter: IDetailPresenter {
     func presentError(error: Error) {
     }
     
-    func presentMoviesInCart(response: AddToCartUseCase.Response){
+    func presentMoviesInCart(response: AddToCartUseCase.Response) {
         let viewModel = AddToCartUseCase.ViewModel(isSuccess: response.isSuccess)
         viewController?.showSaveToCart(viewModel: viewModel)
     }

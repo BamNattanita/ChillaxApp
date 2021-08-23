@@ -5,7 +5,6 @@
 //  Created by Nattanita on 11/8/2564 BE.
 //
 
-
 import Foundation
 
 enum RemoteStoreErrors: Error {
@@ -14,7 +13,6 @@ enum RemoteStoreErrors: Error {
 
 protocol IDetailRemoteStore {
     func details(id: Int, completion: @escaping (Result<MovieDetails?, Error>) -> Void)
-    
 }
 
 class DetailRemoteStore: IDetailRemoteStore {
@@ -22,7 +20,6 @@ class DetailRemoteStore: IDetailRemoteStore {
     private let apiKey = "2b1f7cd2255bdc2ecbee5920521bb794"
     private let baseUrl = "https://api.themoviedb.org/3"
     private let urlSession = URLSession.shared
-    
     private let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -40,7 +37,6 @@ class DetailRemoteStore: IDetailRemoteStore {
         
         let queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
         urlComponents.queryItems = queryItems
-
         guard let url = urlComponents.url else {
             completion(.failure(RemoteStoreError.noResult))
             return
@@ -68,6 +64,5 @@ class DetailRemoteStore: IDetailRemoteStore {
                 return
             }
         }.resume()
-        
     }
 }

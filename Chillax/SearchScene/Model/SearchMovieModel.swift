@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct SearchResultResponse: Codable{
-    var results : [SearchMovie]
+struct SearchResultResponse: Codable {
+    var results: [SearchMovie]
 }
 
 struct SearchMovie: Codable {
-    let id : Int
-    let title : String
+    let id: Int
+    let title: String
     let overview: String
     let backdropPath: String?
     let posterPath: String?

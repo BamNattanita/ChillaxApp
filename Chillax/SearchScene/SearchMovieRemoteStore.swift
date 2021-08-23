@@ -16,7 +16,6 @@ protocol ISearchRemoteStore {
 }
 
 class SearchRemoteStore: ISearchRemoteStore {
-    
     private let apiKey = "2b1f7cd2255bdc2ecbee5920521bb794"
     private let baseUrl = "https://api.themoviedb.org/3"
     private let urlSession = URLSession.shared
@@ -62,6 +61,5 @@ class SearchRemoteStore: ISearchRemoteStore {
                 return
             }
         }.resume()
-        
     }
 }

@@ -13,4 +13,3 @@ class BasketMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var basketMovieTitle: UILabel!
     
 }
-

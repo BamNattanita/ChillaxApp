@@ -5,10 +5,8 @@
 //  Created by Nattanita on 3/8/2564 BE.
 //
 
-
 import UIKit
 import AFNetworking
-
 
 protocol ISearchMovieViewController: AnyObject {
     func showSearch (viewModel: GetSearchMovieUseCase.ViewModel)
@@ -23,7 +21,7 @@ class SearchViewController: UIViewController {
     var router: ISearchRouter!
     var interactor: ISearchMovieInteractor!
     var movieLists: [ISearchMovieViewModel] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,14 +31,12 @@ class SearchViewController: UIViewController {
         router = SearchRouter()
         router.viewController = self
         interactor = SearchInteractor(presenter: presenter, worker: worker)
-        
         SearchText.delegate = self
         SearchBar.isHidden = false
         SearchText.placeholder = "Search Movie"
         tableView.dataSource = self
         tableView.delegate = self
         getSearch(title: "boss")
-        
     }
 
     @IBAction func ShowSearchBar(_ sender: UIButton) {
@@ -67,11 +63,9 @@ extension SearchViewController: UITextFieldDelegate {
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieLists.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as! MovieTableViewCell
         let movieList = movieLists[indexPath.row]
@@ -79,14 +73,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let posterurl = movieLists[indexPath.row].posterURL
         let movieRating = movieList.voteRating
         let movieDate = movieList.releaseDate
-
         cell.movieRating?.text = movieRating
         cell.titleLabel?.text = movieTitle
         cell.movieDate?.text = movieDate
         cell.moviePoster?.setImageWith(posterurl!)
         return cell
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
@@ -118,4 +110,3 @@ extension SearchViewController {
         }
     }
 }
-

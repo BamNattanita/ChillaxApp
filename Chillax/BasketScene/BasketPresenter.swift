@@ -27,7 +27,7 @@ struct BasketPresenter {
 
 extension BasketPresenter: IBasketPresenter {
     func presentMovies(response: BasketUseCase.Response) {
-        let viewModel = BasketUseCase.ViewModel( movies : response.movies)
+        let viewModel = BasketUseCase.ViewModel(movies: response.movies)
         viewController?.showMoviesInCart(viewModel: viewModel)
     }
     
@@ -39,12 +39,12 @@ extension BasketPresenter: IBasketPresenter {
         viewController?.showMoviesInCart(viewModel: viewModel)
     }
     
-    func presentMovieInCart(response: AddMovieToCartUseCase.Response){
+    func presentMovieInCart(response: AddMovieToCartUseCase.Response) {
         let viewModel = AddMovieToCartUseCase.ViewModel(isSuccess: response.isSuccess)
         viewController?.showSaveMovieToCart(viewModel: viewModel)
     }
     
-    func presentCheckOut(response: CheckOutUseCase.Response){
+    func presentCheckOut(response: CheckOutUseCase.Response) {
         let viewModel = CheckOutUseCase.ViewModel(isSuccess: response.isSuccess)
         viewController?.showCheckOut(viewModel: viewModel)
     }

@@ -15,7 +15,6 @@ import Foundation
 }
 
  struct Movie: Codable {
-    
      let id: Int
      let title: String
      let backdropPath: String?
@@ -33,15 +32,12 @@ import Foundation
      var posterURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
     }
-    
      var backdropURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/original\(backdropPath ?? "")")!
     }
-    
      var voteAveragePercentText: String {
         return "\(Int(voteAverage * 10))%"
     }
-    
      var ratingText: String {
         let rating = Int(voteAverage)
         let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
@@ -49,7 +45,6 @@ import Foundation
         }
         return ratingText
     }
-    
 }
 
  struct MovieGenre: Codable {

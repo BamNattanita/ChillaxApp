@@ -10,14 +10,14 @@ import Foundation
 enum CheckOutUseCase {
     
     struct Request{
-        var movieDetails : [MovieDetails]
+        var movieDetails: [MovieDetails]
     }
     
     struct Response{
-        var isSuccess : Bool
+        var isSuccess: Bool
     }
     
     struct ViewModel{
-        var isSuccess : Bool
+        var isSuccess: Bool
     }
 }

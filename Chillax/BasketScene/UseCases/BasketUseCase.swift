@@ -8,16 +8,16 @@
 import Foundation
 
 enum BasketUseCase {
+    
     struct Request {
-        
     }
     
     struct Response {
-        var movies : [MovieDetails]
+        var movies: [MovieDetails]
     }
     
     struct ViewModel {
-        var movies : [MovieDetails]
+        var movies: [MovieDetails]
         
     }
 }

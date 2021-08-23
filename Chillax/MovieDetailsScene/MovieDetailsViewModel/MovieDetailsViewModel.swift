@@ -17,4 +17,3 @@ struct MovieDetailsViewModel : IMovieDetailsViewModel {
     var movieDetail: MovieDetails?
     
 }
-

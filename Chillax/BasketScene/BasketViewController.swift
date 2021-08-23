@@ -41,6 +41,9 @@ class BasketViewController: UIViewController {
     
     @IBAction func deleteButton(_ sender: UIButton) {
         interactor?.deleteMoviesInCart()
+        let alert = UIAlertController(title: "Movies In Cart Deleted!", message: "Your cart is now empty.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func checkoutButton(_ sender: UIButton) {
@@ -70,7 +73,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
+
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -125,5 +128,4 @@ extension BasketViewController {
         interactor?.checkOutCart(request: request)
     }
 }
-
 
