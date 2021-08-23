@@ -15,8 +15,8 @@ protocol ISearchMovieViewController: AnyObject {
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var SearchBar: UIView!
-    @IBOutlet weak var SearchText: UITextField!
+    @IBOutlet weak var searchBar: UIView!
+    @IBOutlet weak var searchText: UITextField!
     
     var router: ISearchRouter!
     var interactor: ISearchMovieInteractor!
@@ -31,19 +31,19 @@ class SearchViewController: UIViewController {
         router = SearchRouter()
         router.viewController = self
         interactor = SearchInteractor(presenter: presenter, worker: worker)
-        SearchText.delegate = self
-        SearchBar.isHidden = false
-        SearchText.placeholder = "Search Movie"
+        searchText.delegate = self
+        searchBar.isHidden = false
+        searchText.placeholder = "Search Movie"
         tableView.dataSource = self
         tableView.delegate = self
         getSearch(title: "boss")
     }
 
-    @IBAction func ShowSearchBar(_ sender: UIButton) {
-        if SearchBar.isHidden {
-            SearchBar.isHidden = false
+    @IBAction func showSearchBar(_ sender: UIButton) {
+        if searchBar.isHidden {
+            searchBar.isHidden = false
         } else {
-            SearchBar.isHidden = true
+            searchBar.isHidden = true
         }
     }
 }
@@ -51,12 +51,12 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        SearchText.endEditing(true)
+        searchText.endEditing(true)
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = SearchText.text {
+        if let text = searchText.text {
             getSearch(title: text)
         }
     }

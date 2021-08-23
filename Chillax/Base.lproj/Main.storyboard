@@ -31,11 +31,11 @@
             </objects>
             <point key="canvasLocation" x="-501" y="-468"/>
         </scene>
-        <!--Home-->
+        <!--Upcoming Movies-->
         <scene sceneID="g1t-d2-fpc">
             <objects>
                 <navigationController id="6tg-uQ-ioj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" selectedImage="film" catalog="system" id="rts-wt-qk4">
+                    <tabBarItem key="tabBarItem" title="Upcoming Movies" selectedImage="film" catalog="system" id="rts-wt-qk4">
                         <color key="badgeColor" red="0.60510832069999998" green="0.1105642691" blue="0.121531941" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8PP-i3-NQY">
@@ -134,7 +134,7 @@
                             <constraint firstItem="9SK-T4-Azn" firstAttribute="bottom" secondItem="TdU-go-uSi" secondAttribute="bottom" id="xzv-PQ-Bnu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="film" catalog="system" selectedImage="film" id="2vF-AL-QUC">
+                    <tabBarItem key="tabBarItem" title="Upcoming Movies" image="film" catalog="system" selectedImage="film" id="2vF-AL-QUC">
                         <color key="badgeColor" systemColor="systemRedColor"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Upcoming Movies" id="eWo-rH-iwh"/>
@@ -370,14 +370,14 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="ShowSearchBar:" destination="Gi9-xc-vhS" eventType="touchUpInside" id="e2R-gw-chk"/>
+                                    <action selector="showSearchBar:" destination="Gi9-xc-vhS" eventType="touchUpInside" id="iFA-ok-3JI"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="SearchBar" destination="cnW-Ic-keV" id="YLX-B6-iIz"/>
-                        <outlet property="SearchText" destination="qVo-Ku-eZv" id="Iy8-Em-cSZ"/>
+                        <outlet property="searchBar" destination="cnW-Ic-keV" id="kZn-7y-arx"/>
+                        <outlet property="searchText" destination="qVo-Ku-eZv" id="VDy-yG-z9W"/>
                         <outlet property="tableView" destination="MVW-C6-CAw" id="mCJ-Zz-VVb"/>
                     </connections>
                 </viewController>
@@ -555,7 +555,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aAI-9h-CEc"/>
+        <segue reference="7lc-cf-vHl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor"/>
     <resources>
