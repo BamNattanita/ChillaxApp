@@ -8,7 +8,6 @@
 import Foundation
 
 protocol IMovieViewModel {
-    
     var id: Int {get}
     var title: String { get }
     var releaseDate: Date { get }
@@ -16,11 +15,9 @@ protocol IMovieViewModel {
     var backdropURL: URL? { get }
     var overview: String {get}
     var voteAverage: Double {get}
-
 }
 
 struct MovieViewModel: IMovieViewModel {
-    
     let id: Int
     let title: String
     let releaseDate: Date

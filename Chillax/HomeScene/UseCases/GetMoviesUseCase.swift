@@ -9,13 +9,10 @@ import Foundation
 
 enum GetMoviesUseCase {
     struct Request {
-        
     }
-    
     struct Response {
         var movies: [Movie]
     }
-    
     struct ViewModel {
         var movies: [IMovieViewModel]
     }

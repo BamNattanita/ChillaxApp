@@ -36,7 +36,7 @@ extension BasketInteractor: IBasketInteractor {
         worker.clearMoviesInCart() { result in
             switch result {
             case .success(let clearMovies):
-                let response = BasketUseCase.Response (movies: clearMovies)
+                let response = BasketUseCase.Response(movies: clearMovies)
                 presenter.presentMoviesCleared(response: response)
             case .failure(let error):
                 presenter.presentError(error: error)
@@ -69,4 +69,3 @@ extension BasketInteractor: IBasketInteractor {
         }
     }
 }
-

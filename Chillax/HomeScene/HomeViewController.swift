@@ -11,7 +11,7 @@ protocol IHomeViewController: AnyObject {
     func showMovies(viewModel: GetMoviesUseCase.ViewModel)
 }
 
-class HomeViewController: UIViewController{
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -19,7 +19,6 @@ class HomeViewController: UIViewController{
     var router: IHomeRouter!
 
     var displayMovies: [IMovieViewModel] = []
-    
     var selectedMovie: String = ""
     
     override func viewDidLoad() {
@@ -48,7 +47,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         let movie = displayMovies[indexPath.row]
         let title = movie.title
         let posterurl = displayMovies[indexPath.row].posterURL
@@ -79,10 +80,11 @@ extension HomeViewController: IHomeViewController {
 extension HomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "movieToDetail" {
-            let cell = sender as! MovieCollectionViewCell
+            if let cell = sender as? MovieCollectionViewCell {
             let indexPath = collectionView.indexPath(for: cell)
             let id = displayMovies[indexPath!.row].id
             router.openMovieDetail(segue: segue, id: id)
+            }
         }
     }
 }

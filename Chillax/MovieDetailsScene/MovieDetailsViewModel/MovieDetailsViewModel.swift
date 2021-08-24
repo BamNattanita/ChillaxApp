@@ -12,8 +12,6 @@ protocol IMovieDetailsViewModel {
     var movieDetail: MovieDetails? {get}
 }
 
-struct MovieDetailsViewModel : IMovieDetailsViewModel {
-    
+struct MovieDetailsViewModel: IMovieDetailsViewModel {
     var movieDetail: MovieDetails?
-    
 }

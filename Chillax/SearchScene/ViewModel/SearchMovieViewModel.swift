@@ -8,7 +8,6 @@
 import Foundation
 
 protocol ISearchMovieViewModel {
-
     var id: Int { get }
     var title: String { get }
     var releaseDate: String { get }
@@ -28,7 +27,6 @@ struct SearchMovieViewModel: ISearchMovieViewModel {
     let genres: [Genre]?
     let voteAverage: Double
     let voteRating: String
-    
 }
 
 extension SearchMovieViewModel {

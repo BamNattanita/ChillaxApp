@@ -11,11 +11,9 @@ enum GetSearchMovieUseCase {
     struct Request {
         var title: String
     }
-    
     struct Response {
         var results: [SearchMovie]?
     }
-    
     struct ViewModel {
         var movies: [ISearchMovieViewModel]?
     }

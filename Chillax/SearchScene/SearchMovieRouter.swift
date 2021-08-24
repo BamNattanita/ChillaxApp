@@ -16,9 +16,8 @@ class SearchRouter: ISearchRouter {
     weak var viewController: SearchViewController?
     
     func openMovieDetailPage(segue: UIStoryboardSegue?, id: Int) {
-        if let searchViewController = segue?.destination as? MovieDetailsViewController{
+        if let searchViewController = segue?.destination as? MovieDetailsViewController {
             searchViewController.id = id
         }
     }
 }
-

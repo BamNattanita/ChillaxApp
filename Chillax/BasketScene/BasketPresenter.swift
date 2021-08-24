@@ -13,7 +13,6 @@ protocol IBasketPresenter {
     func presentMoviesCleared(response: BasketUseCase.Response)
     func presentMovieInCart(response: AddMovieToCartUseCase.Response)
     func presentCheckOut(response: CheckOutUseCase.Response)
-
 }
 
 struct BasketPresenter {
@@ -22,7 +21,6 @@ struct BasketPresenter {
     init(viewController: IBasketViewController) {
         self.viewController = viewController
     }
-
 }
 
 extension BasketPresenter: IBasketPresenter {
@@ -34,7 +32,7 @@ extension BasketPresenter: IBasketPresenter {
     func presentError(error: Error) {
     }
     
-    func presentMoviesCleared(response: BasketUseCase.Response){
+    func presentMoviesCleared(response: BasketUseCase.Response) {
         let viewModel = BasketUseCase.ViewModel(movies: response.movies)
         viewController?.showMoviesInCart(viewModel: viewModel)
     }

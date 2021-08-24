@@ -1,11 +1,10 @@
-////
-////  BasketViewController.swift
-////  Chillax
-////
-////  Created by Nattanita on 3/8/2564 BE.
-////
 //
+//  BasketViewController.swift
+//  Chillax
 //
+//  Created by Nattanita on 3/8/2564 BE.
+//
+
 import UIKit
 import AFNetworking
 
@@ -18,7 +17,6 @@ protocol IBasketViewController: AnyObject {
 class BasketViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
     var interactor: IBasketInteractor!
     var movieLists: [MovieDetails] = []
     
@@ -61,7 +59,9 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasketMovieTableViewCell", for: indexPath) as! BasketMovieTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BasketMovieTableViewCell", for: indexPath) as? BasketMovieTableViewCell else {
+            return UITableViewCell()
+        }
         let movieList = movieLists[indexPath.row]
         let movieTitle = movieList.title
         let backdropurl = movieLists[indexPath.row].backdropURL
@@ -79,7 +79,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+        if editingStyle == .delete {
             tableView.beginUpdates()
             movieLists.remove(at: indexPath.row)
             resaveMovieToCart(movieDetails: movieLists)
@@ -89,7 +89,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension BasketViewController: IBasketViewController{
+extension BasketViewController: IBasketViewController {
 
     func showMoviesInCart (viewModel: BasketUseCase.ViewModel) {
         self.movieLists = viewModel.movies
@@ -128,4 +128,3 @@ extension BasketViewController {
         interactor?.checkOutCart(request: request)
     }
 }
-

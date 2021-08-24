@@ -8,7 +8,7 @@
 import Foundation
 
 protocol IDetailWorker {
-    func getDetail( id: Int, completion: @escaping (Result<MovieDetails?, Error>) -> Void)
+    func getDetail(id: Int, completion: @escaping (Result<MovieDetails?, Error>) -> Void)
     func addToCart (movieDetails: MovieDetails, completion: @escaping (Result<Bool, Error>) -> Void)
 }
 
@@ -39,5 +39,3 @@ extension DetailWorker: IDetailWorker {
         return []
     }
 }
-
-

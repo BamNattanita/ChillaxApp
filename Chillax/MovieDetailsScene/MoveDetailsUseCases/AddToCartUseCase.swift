@@ -8,16 +8,13 @@
 import Foundation
 
 enum AddToCartUseCase {
-    
-    struct Request{
-        var movieDetails : MovieDetails
+    struct Request {
+        var movieDetails: MovieDetails
     }
-    
-    struct Response{
-        var isSuccess : Bool
+    struct Response {
+        var isSuccess: Bool
     }
-    
-    struct ViewModel{
-        var isSuccess : Bool
+    struct ViewModel {
+        var isSuccess: Bool
     }
 }

@@ -10,16 +10,11 @@ import Foundation
 enum GetSelectedMovieUseCase {
     struct Request {
         var title: String
-//        var posterURL: URL
         var id: Int
     }
-    
     struct Response {
-//        var details: MovieDetails?
     }
 
     struct ViewModel {
-//        var details: IMovieDetailsViewModel?
     }
-    
 }

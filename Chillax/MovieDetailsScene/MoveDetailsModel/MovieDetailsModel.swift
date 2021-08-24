@@ -8,8 +8,8 @@
 import Foundation
 
 struct MovieDetails: Codable {
-    let id : Int
-    let title : String
+    let id: Int
+    let title: String
     let overview: String
     let backdropPath: String?
     let posterPath: String?
@@ -20,7 +20,7 @@ struct MovieDetails: Codable {
     var posterURL: URL {
        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
    }
-   
+    
     var backdropURL: URL {
        return URL(string: "https://image.tmdb.org/t/p/original\(backdropPath ?? "")")!
    }
@@ -32,5 +32,4 @@ struct MovieDetails: Codable {
     var voteRating: String {
         return "\(Double(voteAverage)) / 10"
     }
-    
 }

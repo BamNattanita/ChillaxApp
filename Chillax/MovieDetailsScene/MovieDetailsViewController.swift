@@ -1,20 +1,17 @@
-////
-////  MovieDetailsViewController.swift
-////  Chillax
-////
-////  Created by Nattanita on 6/8/2564 BE.
-////
 //
-////import Foundation
+//  MovieDetailsViewController.swift
+//  Chillax
+//
+//  Created by Nattanita on 6/8/2564 BE.
+//
+
 import UIKit
 import AFNetworking
-
 
 protocol IMovieDetailsViewController: AnyObject {
     func showDetail (viewModel: GetDetailsUseCase.ViewModel)
     func showSaveToCart (viewModel: AddToCartUseCase.ViewModel)
 }
-
 
 class MovieDetailsViewController: UIViewController {
 
@@ -26,7 +23,6 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var addToCart: UIButton!
 
     var id: Int!
-
     var movieDetail: MovieDetails?
     var interactor: IDetailInteractor!
 
@@ -37,9 +33,7 @@ class MovieDetailsViewController: UIViewController {
         let remoteStore = DetailRemoteStore()
         let worker = DetailWorker(remoteStore: remoteStore)
         interactor = DetailInteractor(presenter: presenter, worker: worker)
-        
         getDetail(id: id)
-        
         movieSummary.isScrollEnabled = false
         movieSummary.translatesAutoresizingMaskIntoConstraints = true
         movieSummary.sizeToFit()
@@ -55,24 +49,18 @@ class MovieDetailsViewController: UIViewController {
         }
             }
         }
-        
-func adjustUITextViewHeight(arg : UITextView)
-{
+
+func adjustUITextViewHeight(arg: UITextView) {
     arg.translatesAutoresizingMaskIntoConstraints = true
     arg.sizeToFit()
     arg.isScrollEnabled = false
 }
-    
-
-
 
 extension MovieDetailsViewController: IMovieDetailsViewController {
     
     func showDetail(viewModel: GetDetailsUseCase.ViewModel) {
-        
         let movieDetails = viewModel.item?.movieDetail
         self.movieDetail = movieDetails
-        
       DispatchQueue.main.async {
         self.movieTitle.text = movieDetails?.title
         self.movieSummary.text = movieDetails?.overview
@@ -87,9 +75,6 @@ extension MovieDetailsViewController: IMovieDetailsViewController {
     func showSaveToCart(viewModel: AddToCartUseCase.ViewModel) {
         print("save success")
     }
-    
-    
-    
 }
 
 extension MovieDetailsViewController {
@@ -97,7 +82,6 @@ extension MovieDetailsViewController {
         let request = GetDetailsUseCase.Request(id: id)
         interactor?.getDetail(request: request)
     }
-    
 }
 
 extension MovieDetailsViewController {
@@ -105,5 +89,4 @@ extension MovieDetailsViewController {
         let request = AddToCartUseCase.Request(movieDetails: movieDetails)
         interactor?.saveMovie(request: request)
     }
-    
 }

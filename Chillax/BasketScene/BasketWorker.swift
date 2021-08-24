@@ -22,14 +22,14 @@ struct BasketWorker {
 
 extension BasketWorker: IBasketWorker {
     
-    func addMovieToCart (movieDetails: [MovieDetails], completion: @escaping (Result<Bool, Error>) -> Void){
+    func addMovieToCart (movieDetails: [MovieDetails], completion: @escaping (Result<Bool, Error>) -> Void) {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(movieDetails), forKey: basketStoreKey)
         completion(.success(true))
     }
 
     func loadCart( completion: @escaping (Result<[MovieDetails], Error>) -> Void) {
         if let data = UserDefaults.standard.data(forKey: basketStoreKey) {
-            guard let movies = try? PropertyListDecoder().decode([MovieDetails].self, from: data) else{
+            guard let movies = try? PropertyListDecoder().decode([MovieDetails].self, from: data) else {
                 completion(.success([]))
                 return
             }
@@ -44,9 +44,8 @@ extension BasketWorker: IBasketWorker {
         completion(.success([]))
     }
     
-    func checkOutMoviesInCart (movieDetails: [MovieDetails], completion: @escaping (Result<Bool, Error>) -> Void){
+    func checkOutMoviesInCart (movieDetails: [MovieDetails], completion: @escaping (Result<Bool, Error>) -> Void) {
         var checkOutMovies = loadCheckOutMovies()
-        
         for movies in movieDetails {
             checkOutMovies.append(movies)
         }
@@ -64,4 +63,3 @@ extension BasketWorker: IBasketWorker {
         return []
     }
 }
-

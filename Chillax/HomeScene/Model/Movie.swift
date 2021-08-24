@@ -62,7 +62,6 @@ import Foundation
      let site: String
      let size: Int
      let type: String
-    
      var youtubeURL: URL? {
         guard site == "YouTube" else {
             return nil

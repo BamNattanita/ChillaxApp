@@ -8,16 +8,13 @@
 import Foundation
 
 enum CheckOutUseCase {
-    
-    struct Request{
+    struct Request {
         var movieDetails: [MovieDetails]
     }
-    
-    struct Response{
+    struct Response {
         var isSuccess: Bool
     }
-    
-    struct ViewModel{
+    struct ViewModel {
         var isSuccess: Bool
     }
 }
